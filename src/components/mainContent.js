@@ -102,6 +102,12 @@ const list = Object.entries(rates).map(([key, subject], i) => (
           </Form.Control>
         </Form.Group>
      </Form.Row>
+     <Row className="text-center">
+       <Col xl={12}>
+         <Total>Total: {sum}</Total>         
+       </Col>
+     </Row>
+     </Form>
     </StyleFormGroup>
   );
 }
