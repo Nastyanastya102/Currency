@@ -8,7 +8,7 @@ function fetchData() {
 }
 export function* watchWork() {
   const data = yield call(fetchData);
-  yield put(fetchProductsSuccess(data));
+  yield put(fetchProductsSuccess([...Object.entries(data.rates),[data.base , 1]],data.base,data.date,Object.keys(data.rates)[0]));
 }
 
 export function* watchLoadData() {

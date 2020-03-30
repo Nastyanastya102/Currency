@@ -8,7 +8,7 @@ import Url from '../img/bc-money.jpg';
 const ArbitraryComponent = styled(Jumbotron)`
   background: url(${Url}) no-repeat fixed bottom;
   background-size: cover;
-  height: 200px;
+  height: 350px;
 `
 const StyleContent = styled(Container)`
   text-align: center;

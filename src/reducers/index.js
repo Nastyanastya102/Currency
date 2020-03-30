@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux'
-import getText from './getDate';
-import {productsReducer} from './getAnswer';
+import {ratesReducer} from './getAnswer';
+import getSum from './getSum';
+
 
 const rootReducer = combineReducers({
-   isLoad: productsReducer,
-   random : getText
+   isLoad: ratesReducer,
+   sum: getSum,
 })
 
 export default rootReducer;

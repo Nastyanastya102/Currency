@@ -17,7 +17,7 @@ import logger from 'redux-logger';
 import styled from 'styled-components';
 
 const StyledContainer = styled.section`
-    background-color: #f9f9f9;  
+    background-color: #1c1c1c;  
     height: 100vh; 
 `;
 const sagaMiddleware = createSagaMiddleware();

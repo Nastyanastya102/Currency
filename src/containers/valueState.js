@@ -3,18 +3,21 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import {  bindActionCreators } from "redux";
 //Action
-import {getText,getTextInput} from '../actions';
+import {getTextInput,getSum,getSumForOther,setBaseCur,setToCur} from '../actions';
 //Component
 import Content from '../components/mainContent'
 
-const mapStateToProps = ({isLoad,random}) =>({
+const mapStateToProps = ({isLoad,sum}) =>({
     isLoad,
-    random,
+    sum,
   });
 
   const mapDispatchToProps = dispatch => bindActionCreators({
-    getText,
     getTextInput,
+    getSum,
+    getSumForOther,
+    setBaseCur,
+    setToCur
   }, dispatch)
   
 export default connect(
@@ -25,6 +28,6 @@ export default connect(
 
   Content.propTypes = {
     isLoad: PropTypes.object,
-    random: PropTypes.object,
+    sum: PropTypes.object,
   };
   
