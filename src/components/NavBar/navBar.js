@@ -1,24 +1,13 @@
 import React from 'react';
 //Bootstrap
 import {Nav,Navbar} from 'react-bootstrap';
-import { Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 //Style
-import styled from 'styled-components';
+import {StyledLinkContainer,StyledButton,StyledSection} from './navBarStyle';
 //Logo
-import Logo from '../img/money.svg';
+import Logo from '../../img/money.svg';
 
-const StyledButton = styled(Nav.Link)`
-    color: goldenrod!important;
-	font-size: 1.1em;
-	margin: 1em;
-    padding: .3em .2em;
-`;
-const StyledSection = styled(Navbar)`
-    background-color: #1c1c1c;   
-`;
-const StyledLinkContainer = styled(Nav)`
-    flex-direction: row;   
-`;
+
 
 export default function NavBar() {
         return (

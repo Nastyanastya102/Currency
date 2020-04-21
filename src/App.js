@@ -1,13 +1,18 @@
 import React from 'react';
 import {BrowserRouter as Router,Switch, Route,} from 'react-router-dom';
 //Components
-import NavBar from './components/navBar';
-import Jumbo from './components/jumbo';
-import Content from './containers/valueState';
+import NavBar from './components/NavBar/navBar';
+import Jumbo from './components/Jumbo/jumbo';
+import Content from './containers/inputStore';
 //Bootstrap
 import { Container } from 'react-bootstrap';
-//Style
+//Styles
+import styled from 'styled-components';
 
+const StyledContainer = styled.section`
+    background-color: #1c1213;  
+    height: 100vh; 
+`;
 
 function Second() {
   return <h2>Still empty</h2>;
@@ -15,7 +20,8 @@ function Second() {
 
  export default class App extends React.Component { 
   render(){
-    return (       
+    return (   
+      <StyledContainer>   
           <Router>
             <NavBar/>
             <Jumbo/>
@@ -23,9 +29,10 @@ function Second() {
               <Switch>
                 <Route path="/actual" component={Second}/>
                 <Route exact path="/" component={Content}/>             
-                </Switch>
+              </Switch>
             </Container>
           </Router>
+      </StyledContainer> 
     );
   }
 }

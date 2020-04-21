@@ -3,21 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import {  bindActionCreators } from "redux";
 //Action
-import {getTextInput,getSum,getSumForOther,setBaseCur,setToCur} from '../actions';
+import {getTextInput,getSum,getSumForOther,setToCur,fetchProductsPending} from '../actions';
 //Component
-import Content from '../components/mainContent'
+import Content from '../components/MainContent/mainContent'
 
-const mapStateToProps = ({isLoad,sum}) =>({
+const mapStateToProps = ({isLoad}) =>({
     isLoad,
-    sum,
   });
 
   const mapDispatchToProps = dispatch => bindActionCreators({
     getTextInput,
     getSum,
     getSumForOther,
-    setBaseCur,
-    setToCur
+    setToCur,
+    fetchProductsPending
   }, dispatch)
   
 export default connect(
@@ -25,9 +24,7 @@ export default connect(
     mapDispatchToProps,
   )(Content);
   
-
   Content.propTypes = {
     isLoad: PropTypes.object,
-    sum: PropTypes.object,
   };
   

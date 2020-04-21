@@ -12,12 +12,12 @@ export default function getSum(state = initialState, action) {
         case GET_SUM:
             return {
                 ...state,
-                sum: Math.round((+action.value1 * +action.value2 * +action.value3))
+                sum: +(action.value1 * action.value2 * action.value3).toFixed(3)
             }
         case GET_SUM_FOR_OTHER:
             return {
                 ...state,
-                sum: Math.round(((100 * +action.value3) / (100 * +action.value2) * +action.value1))
+                sum: +((100 * action.value3) / (100 * action.value2) * action.value1).toFixed(3)
             }
         default:
             return state;

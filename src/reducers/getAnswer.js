@@ -1,13 +1,14 @@
-import {FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS,SET_BASE_CURRENCY,SET_TO_CURRENCY,GET_TEXT_INPUT} from '../actions';
+import {FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS,FETCH_PRODUCTS_ERROR,SET_TO_CURRENCY,GET_TEXT_INPUT} from '../actions';
 
 
 export const initialState = {
     pending: false,
+    error: false,
     rates: [],
-    base: '',
-    to: '',
+    formGridFrome: '',
+    formGridTo: '',
     date: '',
-    inputText: 1,
+    inputText: '',
 }
 
 export function ratesReducer(state = initialState, action) {
@@ -15,32 +16,32 @@ export function ratesReducer(state = initialState, action) {
         case FETCH_PRODUCTS_PENDING: 
             return {
                 ...state,
-                pending: true
+                pending: true,
             }
         case FETCH_PRODUCTS_SUCCESS:
             return {
                 ...state,
-                pending: false,
                 rates: action.rates,
-                base: action.base,
+                formGridFrome: action.base,
                 date: action.date,
-                to: action.to,
+                formGridTo: action.to,
+                pending: false,
             }
-            case GET_TEXT_INPUT:
+        case FETCH_PRODUCTS_ERROR: 
+            return {
+                ...state,
+                error: true,
+            }
+        case GET_TEXT_INPUT:
             return {
                 ...state,
                 inputText: +action.value
-                }
-            case SET_BASE_CURRENCY:
-                return {
-                    ...state,
-                    base: action.value
-                }
-            case SET_TO_CURRENCY:
-                return {
-                    ...state,
-                    to: action.value
-                }
+            }
+        case SET_TO_CURRENCY:
+            return {
+                ...state,
+                [action.id] : action.value
+            }
         default: 
             return state;
     }

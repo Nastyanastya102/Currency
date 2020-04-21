@@ -1,6 +1,7 @@
 
 export const FETCH_PRODUCTS_PENDING = 'FETCH_PRODUCTS_PENDING';
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
+export const FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR';
 
 export const GET_TEXT = 'GET_TEXT';
 export const GET_INIT_VAL = 'GET_ITIN_VAL';
@@ -8,9 +9,7 @@ export const GET_SUM = 'GET_SUM';
 export const GET_SUM_FOR_OTHER = 'GET_SUM_FOR_OTHER';
 export const GET_TEXT_INPUT = 'GET_TEXT_INPUT';
 
-export const SET_BASE_CURRENCY = 'SET_BASE_CURRENCY';
 export const SET_TO_CURRENCY = 'SET_TO_CURRENCY';
-
 
 
 
@@ -44,24 +43,24 @@ export function getSumForOther(value1,value2,value3){
     }
 }
 
-export function setBaseCur(value) {
-    return {
-        type: SET_BASE_CURRENCY,
-        value,
-    }
-} 
-export function setToCur(value) {
+
+// Установить валюту
+export function setToCur(value,id) {
     return {
         type: SET_TO_CURRENCY,
         value,
+        id,
     }
 } 
+
+// Загрузка данных
 export function fetchProductsPending() {
     return {
         type: FETCH_PRODUCTS_PENDING,
     }
 }
 
+// Получение данных
 export function fetchProductsSuccess(rates,base,date,to) {
     return {
         type: FETCH_PRODUCTS_SUCCESS,
@@ -72,4 +71,9 @@ export function fetchProductsSuccess(rates,base,date,to) {
     }
 }
 
-
+// Ошибка получения данных
+export function fetchProductsError() {
+    return {
+        type: FETCH_PRODUCTS_ERROR,
+    }
+}
