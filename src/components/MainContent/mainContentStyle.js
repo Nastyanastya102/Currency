@@ -15,4 +15,3 @@ export const Total = styled(StyleForFormHead)`
   font-size: 34px;
   margin-top: 2%;
 `;
-

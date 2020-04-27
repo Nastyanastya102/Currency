@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Row, Col} from 'react-bootstrap';
 //Component
 
-import {Total} from './mainContentStyle';
+import {Total} from './MainContentStyle';
 
 
 export function Sum({sum, to}) {

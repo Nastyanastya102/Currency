@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 //Component
-import Sum from '../../containers/sumStore';
+import Sum from '../../containers/SumStore';
 //Bootstrap
 import {Form,Col} from 'react-bootstrap';
 //Styles
-import {StyleForFormHead} from './mainContentStyle';
+import {StyleForFormHead} from './MainContentStyle';
 
 export default class Content extends React.Component{
-  componentDidMount() {      
-     this.props.fetchProductsPending();
-    }
 //Текстовое поле
   handleChangeInput=(event)=>{
     const { getTextInput } = this.props;

@@ -1,6 +1,6 @@
 import React from 'react';
 //Styled
-import {ArbitraryComponent,StyleContent,Header} from './jumboStyle';
+import {ArbitraryComponent,StyleContent,Header} from './JumboStyle';
 
 
 

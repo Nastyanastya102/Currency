@@ -5,7 +5,7 @@ import {  bindActionCreators } from "redux";
 //Action
 import {getTextInput,getSum,getSumForOther,setToCur,fetchProductsPending} from '../actions';
 //Component
-import Content from '../components/MainContent/mainContent'
+import mainContent from '../components/MainContent/MainContent'
 
 const mapStateToProps = ({isLoad}) =>({
     isLoad,
@@ -22,9 +22,9 @@ const mapStateToProps = ({isLoad}) =>({
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-  )(Content);
+  )(mainContent);
   
-  Content.propTypes = {
+  mainContent.propTypes = {
     isLoad: PropTypes.object,
-  };
+};
   

@@ -1,37 +1,43 @@
 import React from 'react';
 import {BrowserRouter as Router,Switch, Route,} from 'react-router-dom';
 //Components
-import NavBar from './components/NavBar/navBar';
-import Jumbo from './components/Jumbo/jumbo';
-import Content from './containers/inputStore';
+import NavBar from './components/NavBar/NavBar';
+import Jumbo from './components/Jumbo/Jumbo';
+import Content from './containers/MainContent';
+import TableList from './containers/TableList.js';
+import Footer from './components/Footer/Footer.js';
+
 //Bootstrap
 import { Container } from 'react-bootstrap';
 //Styles
 import styled from 'styled-components';
 
 const StyledContainer = styled.section`
-    background-color: #1c1213;  
-    height: 100vh; 
+    background-color: #71717126;  
+    min-height: 100vh; 
+`;
+const StyledSection = styled(Container)`
+    margin-bottom: 120px;
 `;
 
-function Second() {
-  return <h2>Still empty</h2>;
-}
-
  export default class App extends React.Component { 
+  componentDidMount() {      
+    this.props.fetchProductsPending();
+   }
   render(){
     return (   
       <StyledContainer>   
           <Router>
             <NavBar/>
             <Jumbo/>
-            <Container>
+            <StyledSection>
               <Switch>
-                <Route path="/actual" component={Second}/>
+                <Route path="/actual" component={TableList}/>
                 <Route exact path="/" component={Content}/>             
               </Switch>
-            </Container>
+            </StyledSection>
           </Router>
+          <Footer/>
       </StyledContainer> 
     );
   }

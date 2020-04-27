@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 //Redux
 import { connect } from "react-redux";
 //Component
-import {Sum} from '../components/MainContent/sum'
+import {Sum} from '../components/MainContent/sum';
 
 const mapStateToProps = ({isLoad: {to},sum: {sum}}) =>({
     sum,

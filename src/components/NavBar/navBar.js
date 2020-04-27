@@ -3,7 +3,7 @@ import React from 'react';
 import {Nav,Navbar} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 //Style
-import {StyledLinkContainer,StyledButton,StyledSection} from './navBarStyle';
+import {StyledLinkContainer,StyledButton,StyledSection} from './NavBarStyle';
 //Logo
 import Logo from '../../img/money.svg';
 
