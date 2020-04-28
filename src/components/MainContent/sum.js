@@ -14,7 +14,7 @@ export function Sum({sum, to}) {
           {
             sum 
             ? <Total>Total: {sum} {to}</Total> 
-            : null
+            : <Total opac="true">Total: {sum} {to}</Total> 
           }                        
         </Col>
      </Row>

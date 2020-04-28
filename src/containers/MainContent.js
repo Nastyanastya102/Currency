@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 //Redux
 import { connect } from "react-redux";
 import {  bindActionCreators } from "redux";
@@ -23,8 +22,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps,
   )(mainContent);
-  
-  mainContent.propTypes = {
-    isLoad: PropTypes.object,
-};
   

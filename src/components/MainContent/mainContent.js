@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 //Component
 import Sum from '../../containers/SumStore';
+import {Input} from './Input/Input';
 //Bootstrap
-import {Form,Col} from 'react-bootstrap';
-//Styles
-import {StyleForFormHead} from './MainContentStyle';
+import {Form} from 'react-bootstrap';
 
 export default class Content extends React.Component{
 //Текстовое поле
@@ -38,9 +37,7 @@ handleSubmit = (event) =>{
     getTextInput('');
 }
 render(){
-
 const {isLoad: { pending,rates,formGridFrome,formGridTo,inputText }} = this.props;
-
 if(pending) return <p>Loading...</p>;
 const list = rates.map(([key,sub]) => (        
   <option key={key} value={key}>{key}</option>));
@@ -48,39 +45,51 @@ const list = rates.map(([key,sub]) => (
   return (
        <Form onSubmit={(e)=> this.handleSubmit(e)}>
        <Form.Row>
+        <Input
+        controlId='formGridInput'
+        text='Amount'
+        as='input'
+        placeholder='Enter value'
+        value={inputText}
+        event={(event) => this.handleChangeInput(event)}/>
 
-        <Form.Group as={Col} controlId="formGridInput" >
-          <StyleForFormHead>Amount</StyleForFormHead>
-          <Form.Control value={inputText}  placeholder="Enter value" onChange={(event) => this.handleChangeInput(event)}/>
-        </Form.Group>
+        <Input
+        controlId='formGridFrome'
+        text='From'
+        as='select'
+        value={formGridFrome}
+        name="from"
+        list={list}
+        event={(event) => this.handleChange(event)}/>
 
-        <Form.Group as={Col} controlId="formGridFrome" >
-          <StyleForFormHead>From</StyleForFormHead>
-          <Form.Control as="select"  name="from" value={formGridFrome} onChange={(event) => this.handleChange(event)}>
-                {list}
-          </Form.Control>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridTo" >
-          <StyleForFormHead>To</StyleForFormHead>
-         <Form.Control as="select"  name="to" value={formGridTo} onChange={(event) => this.handleChange(event)} >
-                {list}
-          </Form.Control>
-        </Form.Group>
+        <Input
+        controlId='formGridTo'
+        text='To'
+        as='select'
+        value={formGridTo}
+        name="to"
+        list={list}
+        event={(event) => this.handleChange(event)}/>
      </Form.Row>
-     <Sum/>
+     <Sum/>  
      </Form>
   );
 }
 }
 
 Content.propTypes = {
-  setBaseCur: PropTypes.func,
-  setToCur: PropTypes.func,
-  getTextInput: PropTypes.func,
-  getSum: PropTypes.func,
-  getSumForOther: PropTypes.func,
-  isLoad: PropTypes.object, 
-  fetchProductsPending : PropTypes.func,
+  isLoad: PropTypes.shape({
+      date: PropTypes.string.isRequired,
+      error: PropTypes.bool.isRequired,
+      formGridFrome: PropTypes.string.isRequired,
+      formGridTo: PropTypes.string.isRequired,
+      inputText: PropTypes.number.isRequired,
+      pending: PropTypes.bool.isRequired,
+      rates: PropTypes.array.isRequired,
+  }),
+  setToCur: PropTypes.func.isRequired,
+  getTextInput: PropTypes.func.isRequired,
+  getSum: PropTypes.func.isRequired,
+  getSumForOther: PropTypes.func.isRequired,
+  fetchProductsPending : PropTypes.func.isRequired,
 };
-

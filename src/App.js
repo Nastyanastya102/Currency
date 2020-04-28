@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {BrowserRouter as Router,Switch, Route,} from 'react-router-dom';
 //Components
 import NavBar from './components/NavBar/NavBar';
@@ -17,7 +18,7 @@ const StyledContainer = styled.section`
     min-height: 100vh; 
 `;
 const StyledSection = styled(Container)`
-    margin-bottom: 120px;
+    margin-bottom: 100px;
 `;
 
  export default class App extends React.Component { 
@@ -42,3 +43,8 @@ const StyledSection = styled(Container)`
     );
   }
 }
+
+
+App.propTypes = {
+  fetchProductsPending: PropTypes.func.isRequired,
+};

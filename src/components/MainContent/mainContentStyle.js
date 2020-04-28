@@ -1,6 +1,6 @@
 //Style
 import styled from 'styled-components';
-import {Form} from 'react-bootstrap';
+import {Form, Col} from 'react-bootstrap';
 
 
 export const StyleForFormHead = styled(Form.Label)`
@@ -10,8 +10,10 @@ export const StyleForFormHead = styled(Form.Label)`
   color: #45a6ba;
 `;
 
-export const Total = styled(StyleForFormHead)`
+export const Total = styled(Col)`
   font-family: 'Baloo Tamma 2', cursive;
-  font-size: 34px;
-  margin-top: 2%;
+  font-size: 37px;
+  margin-top: 3%;
+  color: #243955;
+  opacity: ${props => props.opac ? "0;" : "1;"};
 `;

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 //Redux
 import { connect } from "react-redux";
 //Component
@@ -13,9 +12,4 @@ export default connect(
     mapStateToProps,
     null,
   )(Sum);
-  
-Sum.propTypes = {
-    sum: PropTypes.number,
-    to: PropTypes.string,
-};
   

@@ -8,7 +8,7 @@ export const initialState = {
     formGridFrome: '',
     formGridTo: '',
     date: '',
-    inputText: '',
+    inputText: 0,
 }
 
 export function ratesReducer(state = initialState, action) {

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 //Redux
 import { connect } from "react-redux";
 //Component
@@ -12,8 +11,3 @@ export default connect(
     mapStateToProps,
     null,
   )(TableList);
-  
-TableList.propTypes = {
-    rates: PropTypes.array
-};
-  

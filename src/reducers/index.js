@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import {ratesReducer} from './getAnswer';
-import getSum from './getSum';
+import {getSum} from './getSum';
 
 
 const rootReducer = combineReducers({

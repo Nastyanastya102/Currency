@@ -31,5 +31,5 @@ export default function TableList({rates}) {
 
 
 TableList.propTypes = {
-  rates: PropTypes.array
+  rates: PropTypes.array.isRequired
 };

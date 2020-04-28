@@ -7,7 +7,7 @@ const initialState={
     sum: 0,
 }
 
-export default function getSum(state = initialState, action) {
+export  function getSum(state = initialState, action) {
     switch(action.type) {
         case GET_SUM:
             return {
