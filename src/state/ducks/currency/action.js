@@ -46,13 +46,13 @@ import types from './types'
     }
 }
 
-// Get Data
- function fetchProductsSuccess(rates,base,date,to) {
+// Get dataFromAPI
+ function fetchProductsSuccess(dataFromAPI,formGridFrome,date,formGridTo) {
     return {
         type: types.FETCH_PRODUCTS_SUCCESS,
-        rates,
-        base,
-        to,
+        dataFromAPI,
+        formGridFrome,
+        formGridTo,
         date,
     }
 }

@@ -5,14 +5,14 @@ import types from "./types";
 const initialStateGetData = {
     pending: false,
     error: false,
-    rates: [],
+    dataFromAPI: [],
     formGridFrome: '',
     formGridTo: '',
     date: '',
     inputText: 0,
 }
 
-function gettingData(state = initialStateGetData, action) {
+export function gettingData(state = initialStateGetData, action) {
     switch(action.type) {
         case types.FETCH_PRODUCTS_PENDING: 
             return {
@@ -22,7 +22,7 @@ function gettingData(state = initialStateGetData, action) {
         case types.FETCH_PRODUCTS_SUCCESS:
             return {
                 ...state,
-                rates: [...Object.entries(action.data.rates),[action.data.base , 1]],
+                dataFromAPI: [...Object.entries(action.data.rates),[action.data.base , 1]],
                 formGridFrome: action.data.base,
                 date: action.data.date,
                 formGridTo: Object.keys(action.data.rates)[0],
@@ -52,7 +52,7 @@ const initialStateSum = {
     sum: 0,
 }
 
- function getSum(state = initialStateSum, action) {
+export function getSum(state = initialStateSum, action) {
     switch(action.type) {
         case types.GET_SUM:
             return {

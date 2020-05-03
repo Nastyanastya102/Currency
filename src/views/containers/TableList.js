@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 //Component
 import { TableList } from '../components/Table/TableList';
 
-const mapStateToProps = ({ state: { isLoad: { rates }}}) =>({
-   rates,
+const mapStateToProps = ({ state: { isLoad: { dataFromAPI }}}) =>({
+  dataFromAPI,
   });
 
 export default connect(

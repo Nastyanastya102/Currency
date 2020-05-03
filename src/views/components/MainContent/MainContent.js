@@ -26,8 +26,8 @@ export  default class Content extends React.Component{
 //Отправка формы
 handleSubmit = (event) =>{
   event.preventDefault();
-  const {getTextInput, getSum,getSumForOther,isLoad: { rates,formGridFrome,formGridTo,inputText }} = this.props;
-  const obj = Object.fromEntries(rates);
+  const {getTextInput, getSum,getSumForOther,isLoad: { dataFromAPI,formGridFrome,formGridTo,inputText }} = this.props;
+  const obj = Object.fromEntries(dataFromAPI);
 
   if(formGridFrome === 'EUR'){
     getSum(inputText,obj[formGridFrome],obj[formGridTo]);
@@ -37,9 +37,9 @@ handleSubmit = (event) =>{
     getTextInput('');
 }
 render(){
-const {isLoad: { pending,rates,formGridFrome,formGridTo,inputText }} = this.props;
+const {isLoad: { pending,dataFromAPI,formGridFrome,formGridTo,inputText }} = this.props;
 if(pending) return <p>Loading...</p>;
-const list = rates.map(([key,sub]) => (        
+const list = dataFromAPI.map(([key,sub]) => (        
   <option key={key} value={key}>{key}</option>));
 
   return (
@@ -85,7 +85,7 @@ Content.propTypes = {
       formGridTo: PropTypes.string.isRequired,
       inputText: PropTypes.number.isRequired,
       pending: PropTypes.bool.isRequired,
-      rates: PropTypes.array.isRequired,
+      dataFromAPI: PropTypes.array.isRequired,
   }),
   setToCur: PropTypes.func.isRequired,
   getTextInput: PropTypes.func.isRequired,

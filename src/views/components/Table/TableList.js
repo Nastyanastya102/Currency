@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 //Botstrap
 import Table from 'react-bootstrap/Table';
 
-export function TableList({rates}) {
-  let tableRow = rates.map( (item, index) => {
+export function TableList({dataFromAPI}) {
+  let tableRow = dataFromAPI.map( (item, index) => {
         return(
           <tr key={item[0]}>
             <td>{index + 1}</td>
@@ -31,5 +31,5 @@ export function TableList({rates}) {
 
 
 TableList.propTypes = {
-  rates: PropTypes.array.isRequired
+  dataFromAPI: PropTypes.array.isRequired
 };
