@@ -43,7 +43,7 @@ export  class App extends React.Component {
       </StyledContainer> 
     );
   }
-}
+};
 
 
 App.propTypes = {

@@ -5,7 +5,7 @@ import { Jumbotron, Container } from 'react-bootstrap';
 import Url from '../../../img/bc-money.jpg';
 
 export const ArbitraryComponent = styled(Jumbotron)`
-  font-family: 'Baloo Tamma 2', cursive;
+  font-family: "Baloo Tamma 2", cursive;
   background: url(${Url}) no-repeat fixed bottom;
   background-size: cover;
   height: 400px;

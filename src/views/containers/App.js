@@ -1,8 +1,8 @@
 //Redux
-import { connect } from "react-redux"
-import {  bindActionCreators } from "redux"
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 //Action 
-import operation from '../../state/ducks/currency/operation'
+import operation from '../../state/ducks/currency/operation';
 import { App } from '../App';
 
 const mapDispatchToProps = dispatch => bindActionCreators({

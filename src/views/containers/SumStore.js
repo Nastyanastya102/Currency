@@ -1,5 +1,5 @@
 //Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 //Component
 import { Sum } from '../components/MainContent/sum';
 

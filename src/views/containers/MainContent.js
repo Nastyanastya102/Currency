@@ -1,5 +1,5 @@
 //Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import {  bindActionCreators } from "redux";
 //Action
 import operation from '../../state/ducks/currency/operation';
@@ -17,7 +17,7 @@ const mapStateToProps = ( { state: { isLoad, sum } }) =>({
     getSumForOther: operation.getSumForOther,
     setToCur: operation.setToCur,
     fetchProductsPending: operation.fetchProductsPending
-  }, dispatch)
+  }, dispatch);
   
 export default connect(
     mapStateToProps,

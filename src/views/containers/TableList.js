@@ -1,5 +1,5 @@
 //Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 //Component
 import { TableList } from '../components/Table/TableList';
 
