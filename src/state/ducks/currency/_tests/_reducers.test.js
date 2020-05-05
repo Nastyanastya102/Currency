@@ -134,22 +134,9 @@ describe('should return right sum', () => {
           value1: 10,
           value2: 15,
           value3: 20,
+          currency: 'EUR',
         }
       )
     ).toEqual({ sum: 3000 });
-  });
-
-  it('should return GET_SUM_FOR_OTHER curerncy', () => {
-    expect(
-      getSum(
-        { sum: 0 },
-        {
-          type: dataTypes.GET_SUM_FOR_OTHER,
-          value1: 10,
-          value2: 15,
-          value3: 10,
-        }
-      )
-    ).toEqual({ sum: 6.67 });
   });
 });

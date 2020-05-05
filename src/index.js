@@ -8,7 +8,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 //Store
 import rootReducer from './state/store';
-
 let store = rootReducer();
-ReactDOM.render( <React.StrictMode><Provider store={store}><App /></Provider></React.StrictMode>, document.getElementById('root'));
+
+let app = (
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
+ReactDOM.render(app, document.getElementById('root'));
 serviceWorker.unregister();

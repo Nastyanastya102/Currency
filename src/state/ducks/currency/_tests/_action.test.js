@@ -2,8 +2,8 @@ import * as types from '../index';
 const { dataTypes, dataOperations } = types;
 
 describe('should return right value from all action creators', () => {
-  const sum = (typ) => {
-    return { type: typ, value1: 10, value2: 10, value3: 10 };
+  const sum = (typ, currency) => {
+    return { type: typ, value1: 10, value2: 10, value3: 10, currency: 'EUR' };
   };
 
   it('should create an action to add text value', () => {
@@ -13,13 +13,9 @@ describe('should return right value from all action creators', () => {
     });
   });
 
-  it('should create an action for get a sum', () => {
-    expect(dataOperations.getSum(10, 10, 10)).toEqual(sum(dataTypes.GET_SUM));
-  });
-
   it('should create an action for get a sum for others', () => {
-    expect(dataOperations.getSumForOther(10, 10, 10)).toEqual(
-      sum(dataTypes.GET_SUM_FOR_OTHER)
+    expect(dataOperations.getSum(10, 10, 10, 'EUR')).toEqual(
+      sum(dataTypes.GET_SUM, 'EUR')
     );
   });
 

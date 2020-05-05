@@ -1,13 +1,11 @@
-import actions from "./action";
+import actions from './action';
 //Action Creaters
 const fetchProductsPending = actions.fetchProductsPending;
 const fetchProductsSuccess = actions.fetchProductsSuccess;
 const fetchProductsError = actions.fetchProductsError;
 
-
 const getTextInput = actions.getTextInput;
 const getSum = actions.getSum;
-const getSumForOther = actions.getSumForOther;
 const setToCur = actions.setToCur;
 
 export default {
@@ -16,6 +14,5 @@ export default {
   fetchProductsError,
   getTextInput,
   getSum,
-  getSumForOther,
-  setToCur
+  setToCur,
 };

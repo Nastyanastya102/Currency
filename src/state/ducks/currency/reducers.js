@@ -11,6 +11,16 @@ const initialStateGetData = {
   inputText: 0,
 };
 
+function sumFunc(arg) {
+  let sum;
+  arg.currency === 'EUR'
+    ? (sum = +(arg.value1 * arg.value2 * arg.value3).toFixed(2))
+    : (sum = +(((100 * arg.value3) / (100 * arg.value2)) * arg.value1).toFixed(
+        2
+      ));
+  return sum;
+}
+
 export function gettingData(state = initialStateGetData, action) {
   switch (action.type) {
     case types.FETCH_PRODUCTS_PENDING:
@@ -59,20 +69,12 @@ export function getSum(state = initialStateSum, action) {
     case types.GET_SUM:
       return {
         ...state,
-        sum: +(action.value1 * action.value2 * action.value3).toFixed(2),
-      };
-    case types.GET_SUM_FOR_OTHER:
-      return {
-        ...state,
-        sum: +(
-          ((100 * action.value3) / (100 * action.value2)) *
-          action.value1
-        ).toFixed(2),
+        sum: sumFunc(action),
       };
     default:
       return state;
   }
-};
+}
 
 const rootReducer = combineReducers({
   isLoad: gettingData,

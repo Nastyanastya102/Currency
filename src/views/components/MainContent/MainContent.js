@@ -29,26 +29,20 @@ export default class Content extends React.Component {
     const {
       getTextInput,
       getSum,
-      getSumForOther,
       isLoad: { dataFromAPI, formGridFrome, formGridTo, inputText },
     } = this.props;
-
     const obj = Object.fromEntries(dataFromAPI);
 
-    if (formGridFrome === "EUR") {
-      getSum(inputText, obj[formGridFrome], obj[formGridTo]);
-    } else {
-      getSumForOther(inputText, obj[formGridFrome], obj[formGridTo]);
-    }
-    getTextInput("");
+    getSum(inputText, obj[formGridFrome], obj[formGridTo], formGridFrome);
+    getTextInput('');
   };
   render() {
     const {
       isLoad: { pending, dataFromAPI, formGridFrome, formGridTo, inputText },
     } = this.props;
-    
+
     if (pending) return <p>Loading...</p>;
-    const list = dataFromAPI.map(([key, sub]) => (
+    const list = dataFromAPI.map(([key]) => (
       <option key={key} value={key}>
         {key}
       </option>
@@ -90,7 +84,7 @@ export default class Content extends React.Component {
       </Form>
     );
   }
-};
+}
 
 Content.propTypes = {
   isLoad: PropTypes.shape({
@@ -105,6 +99,5 @@ Content.propTypes = {
   setToCur: PropTypes.func.isRequired,
   getTextInput: PropTypes.func.isRequired,
   getSum: PropTypes.func.isRequired,
-  getSumForOther: PropTypes.func.isRequired,
   fetchProductsPending: PropTypes.func.isRequired,
 };

@@ -9,22 +9,13 @@ function getTextInput(value) {
 }
 
 // Get Sum . EUR base
-function getSum(value1, value2, value3) {
+function getSum(value1, value2, value3, currency) {
   return {
     type: types.GET_SUM,
     value1,
     value2,
     value3,
-  };
-}
-
-// Get Sum . Other base
-function getSumForOther(value1, value2, value3) {
-  return {
-    type: types.GET_SUM_FOR_OTHER,
-    value1,
-    value2,
-    value3,
+    currency,
   };
 }
 
@@ -65,7 +56,6 @@ function fetchProductsError() {
 export default {
   getTextInput,
   getSum,
-  getSumForOther,
   setToCur,
   fetchProductsPending,
   fetchProductsSuccess,
