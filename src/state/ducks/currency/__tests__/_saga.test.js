@@ -37,13 +37,18 @@ describe('All sagas', () => {
 
   it('Should call watchWork and put FETCH_PRODUCTS_SUCCESS or FETCH_PRODUCTS_ERROR action', () => {
     const generator = watchWork();
+    const data = {
+      rates: { AUD: 1.6598, BGN: 1.9558 },
+      base: 'EUR',
+      date: '2020-04-30',
+    };
 
     expect(generator.next().value).toEqual(call(fetchData));
 
-    expect(generator.next().value).toEqual(
+    expect(generator.next(data).value).toEqual(
       put({
         type: dataTypes.FETCH_PRODUCTS_SUCCESS,
-        data: undefined,
+        data: data,
       })
     );
     expect(generator.throw('error').value).toEqual(

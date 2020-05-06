@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 //Botstrap
 import Table from 'react-bootstrap/Table';
 
-export function TableList({ dataFromAPI }) {
+export default function TableList({ dataFromAPI }) {
   let tableRow = dataFromAPI.map((item, index) => {
     return (
       <tr key={item[0]}>

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MainContent renders correctly 1`] = `
+<ForwardRef
+  bordered={true}
+  hover={true}
+  striped={true}
+  variant="dark"
+>
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        Currency
+      </th>
+      <th>
+        Exchange Rate = 1 EUR
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      key="1"
+    >
+      <td>
+        1
+      </td>
+      <td>
+        1
+      </td>
+      <td>
+        EUR
+      </td>
+    </tr>
+    <tr
+      key="2"
+    >
+      <td>
+        2
+      </td>
+      <td>
+        2
+      </td>
+      <td>
+        CAD
+      </td>
+    </tr>
+    <tr
+      key="3"
+    >
+      <td>
+        3
+      </td>
+      <td>
+        3
+      </td>
+      <td>
+        RUB
+      </td>
+    </tr>
+  </tbody>
+</ForwardRef>
+`;

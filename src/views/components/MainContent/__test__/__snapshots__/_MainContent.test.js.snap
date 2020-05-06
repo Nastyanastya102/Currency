@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MainContent renders correctly 1`] = `
+<Form
+  inline={false}
+  onSubmit={[Function]}
+>
+  <FormRow>
+    <Input
+      as="input"
+      controlId="formGridInput"
+      event={[Function]}
+      placeholder="Enter value"
+      text="Amount"
+      value={0}
+    />
+    <Input
+      as="select"
+      controlId="formGridFrome"
+      event={[Function]}
+      list={Array []}
+      name="from"
+      text="From"
+      value=""
+    />
+    <Input
+      as="select"
+      controlId="formGridTo"
+      event={[Function]}
+      list={Array []}
+      name="to"
+      text="To"
+      value=""
+    />
+  </FormRow>
+  <Connect(Sum) />
+</Form>
+`;
