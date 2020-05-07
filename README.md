@@ -23,8 +23,8 @@ Builds the app for production to the `build` folder.<br />
 
 ![alt text](screenshots/actual.jpg "Page with actual data")
 
-<<<<<<< HEAD
+ HEAD
 ![alt text](screenshots/bottom.jpg "Footer of site")
 =======
 ![alt text](screenshots/bottom.jpg "Footer of site")
->>>>>>> f1780852e352a82fc25a598e5a32055beba4c774
+
