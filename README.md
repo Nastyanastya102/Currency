@@ -19,12 +19,11 @@ Builds the app for production to the `build` folder.<br />
 
 ## Learn More
 
+ Main
 ![alt text](screenshots/main.jpg "Main page with converter")
-
+Actual data
 ![alt text](screenshots/actual.jpg "Page with actual data")
+Footer
+![alt text](screenshots/bottom.jpg "Footer of site")
 
- HEAD
-![alt text](screenshots/bottom.jpg "Footer of site")
-=======
-![alt text](screenshots/bottom.jpg "Footer of site")
 
