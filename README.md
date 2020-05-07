@@ -19,8 +19,8 @@ Builds the app for production to the `build` folder.<br />
 
 ## Learn More
 
-![alt text](screenshots/main.png "Main page with converter")
+![alt text](screenshots/main.jpg "Main page with converter")
 
-![alt text](screenshots/actual.png "Page with actual data")
+![alt text](screenshots/actual.jpg "Page with actual data")
 
-![alt text](screenshots/bottom.png "Footer of site")
+![alt text](screenshots/bottom.jpg "Footer of site")
