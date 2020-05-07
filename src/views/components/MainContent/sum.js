@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//Bootstrap
-import { Row, Col } from 'react-bootstrap';
-//Component
 
 import { Total } from './MainContentStyle';
 
+import { Row, Col } from 'react-bootstrap';
 
-export function Sum({ sum, formGridTo }) {
+export const Sum = ({ sum, formGridTo }) => {
     return(
     <Row className="text-center">
         <Col xl={12}>

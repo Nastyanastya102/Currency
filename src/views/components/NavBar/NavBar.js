@@ -1,17 +1,16 @@
 import React from "react";
-//Bootstrap
+
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-//Style
+import Logo from "../../../img/money.svg";
 import {
   StyledLinkContainer,
   StyledButton,
   StyledSection,
 } from "./NavBarStyle";
-//Logo
-import Logo from "../../../img/money.svg";
 
-export function NavBar() {
+
+export const NavBar = () => {
   return (
     <StyledSection expand="lg" variant="light" sticky="top">
       <Nav.Link as={Link} to="/">

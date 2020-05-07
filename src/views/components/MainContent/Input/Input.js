@@ -1,14 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-//Bootsrpat
-import { Form, Col } from "react-bootstrap";
-//Styles
-import { StyleForFormHead } from "../MainContentStyle";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export function Input(props) {
+import { Form, Col } from 'react-bootstrap';
+import { StyleForFormHead } from '../MainContentStyle';
+
+export const Input = props => {
   return (
     <Form.Group as={Col} controlId={props.controlId}>
-      <StyleForFormHead>{props.text}</StyleForFormHead>
+      <StyleForFormHead>
+        {props.text === 'Base' ? `${props.text} = ${props.value}` : props.text}
+      </StyleForFormHead>
       <Form.Control
         as={props.as}
         placeholder={props.placeholder}

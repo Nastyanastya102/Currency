@@ -1,8 +1,8 @@
 import React from 'react';
-//Styled
+
 import { ArbitraryComponent, StyleContent, Header } from './JumboStyle';
 
-export function Jumbo() {
+export const Jumbo = () => {
   return (
     <ArbitraryComponent fluid>
       <StyleContent>

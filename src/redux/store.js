@@ -1,16 +1,18 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import * as reducers from './ducks'; // import all reducers from ducks/index.js
-import { rootSaga } from './react-saga';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 
+import { rootSaga } from './ducks/moduls/currencyApp';
+import  reducers from './ducks/moduls/currencyApp'; 
+
+
 //Func witch create store
-export default function configureStore(initialState = {}) {
+export const configureStore = (initialState = {}) => {
   const rootReducer = combineReducers(reducers);
   const sagaMiddleware = createSagaMiddleware();
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-  let store = createStore(
+  const store = createStore(
     rootReducer,
     initialState,
     composeEnhancers(applyMiddleware(logger, sagaMiddleware))

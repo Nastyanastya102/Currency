@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//Component
+
 import Sum from '../../containers/SumStore';
 import { Input } from './Input/Input';
-//Bootstrap
+
 import { Form } from 'react-bootstrap';
 
 export default class Content extends React.Component {
-  //Текстовое поле
+  
   handleChangeInput = (event) => {
     const { getTextInput } = this.props;
 
@@ -16,35 +16,33 @@ export default class Content extends React.Component {
     }
   };
 
-  //Поле выбора
   handleChange = (event) => {
-    const { setToCur, getSum } = this.props;
+    const { setToCur, getSumValue } = this.props;
     setToCur(event.target.selectedOptions[0].text, event.target.id);
-    getSum(0, 0, 0);
+    getSumValue(0, 0, 0);
   };
 
-  //Отправка формы
   handleSubmit = (event) => {
     event.preventDefault();
     const {
       getTextInput,
-      getSum,
-      isLoad: { dataFromAPI, formGridFrome, formGridTo, inputText },
+      getSumValue,
+      gettingData: { dataFromAPI, formGridFrome, formGridTo, inputText },
     } = this.props;
-    const obj = Object.fromEntries(dataFromAPI);
 
-    getSum(inputText, obj[formGridFrome], obj[formGridTo], formGridFrome);
+    const obj = Object.fromEntries(dataFromAPI);
+    getSumValue(inputText, obj[formGridFrome], obj[formGridTo], formGridFrome);
     getTextInput('');
   };
   render() {
     const {
-      isLoad: { pending, dataFromAPI, formGridFrome, formGridTo, inputText },
+      gettingData: { pending, dataFromAPI, formGridFrome, formGridTo, inputText },
     } = this.props;
 
     if (pending) return <p>Loading...</p>;
-    const list = dataFromAPI.map(([key]) => (
-      <option key={key} value={key}>
-        {key}
+    const list = dataFromAPI.map((key, index) => (
+      <option key={index} value={key[0]}>
+        {key[0]}
       </option>
     ));
 
@@ -62,7 +60,7 @@ export default class Content extends React.Component {
 
           <Input
             controlId="formGridFrome"
-            text="From"
+            text="Base"
             as="select"
             value={formGridFrome}
             name="from"
@@ -87,7 +85,7 @@ export default class Content extends React.Component {
 }
 
 Content.propTypes = {
-  isLoad: PropTypes.shape({
+  gettingData: PropTypes.shape({
     date: PropTypes.string.isRequired,
     error: PropTypes.bool.isRequired,
     formGridFrome: PropTypes.string.isRequired,
@@ -98,6 +96,6 @@ Content.propTypes = {
   }),
   setToCur: PropTypes.func.isRequired,
   getTextInput: PropTypes.func.isRequired,
-  getSum: PropTypes.func.isRequired,
+  getSumValue: PropTypes.func.isRequired,
   fetchProductsPending: PropTypes.func.isRequired,
 };

@@ -6,7 +6,7 @@ import expect from 'expect';
 import Content from '../MainContent';
 
 const props = {
-  isLoad: {
+  gettingData: {
     pending: false,
     error: false,
     dataFromAPI: [],
@@ -17,7 +17,7 @@ const props = {
   },
   getTextInput: jest.fn(),
   setToCur: jest.fn(),
-  getSum: jest.fn(),
+  getSumValue: jest.fn(),
   fetchProductsPending: jest.fn(),
 };
 describe('Should render MainContent', () => {
@@ -34,8 +34,8 @@ describe('Should render MainContent', () => {
   it('Should return Loading text', () => {
     const nextProps = {
       ...props,
-      isLoad: {
-        ...props.isLoad,
+      gettingData: {
+        ...props.gettingData,
         pending: true,
       },
     };

@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-//Bootstrap
+import PropTypes from 'prop-types';
+
 import { Col } from 'react-bootstrap';
 
-export default function List(props) {
+export const List = props => {
   return (
     <>
       <Col md={{ span: 3, offset: 1 }} lg={{ span: 3, offset: 2 }}>

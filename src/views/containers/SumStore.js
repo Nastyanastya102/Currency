@@ -1,9 +1,8 @@
-//Redux
 import { connect } from 'react-redux';
-//Component
+
 import { Sum } from '../components/MainContent/sum';
 
-const mapStateToProps = ({ state: { isLoad: { formGridTo }, sum: { sum }}}) =>({
+const mapStateToProps = ({ gettingData: { formGridTo }, getSum: { sum }}) => ({
     sum,
     formGridTo,
   });

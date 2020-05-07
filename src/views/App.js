@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter as Router,Switch, Route,} from 'react-router-dom';
-//Components
+
 import {NavBar} from './components/NavBar/NavBar';
 import {Jumbo} from './components/Jumbo/Jumbo';
 import {Footer} from './components/Footer/Footer.js';
-//Containers
 import Content from './containers/MainContent';
 import TableList from './containers/TableList.js';
-//Bootstrap
+
 import { Container } from 'react-bootstrap';
-//Styles
 import styled from 'styled-components';
 
 const StyledContainer = styled.section`
@@ -24,8 +22,9 @@ const StyledSection = styled(Container)`
 
 export  class App extends React.Component { 
   componentDidMount() {      
-    this.props.fetchProductsPending();
+    this.props.fetchProductsPending();   
    }
+   
   render(){
     return (   
       <StyledContainer>   

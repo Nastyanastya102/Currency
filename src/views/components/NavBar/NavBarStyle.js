@@ -1,4 +1,3 @@
-//Style
 import styled from "styled-components";
 import { Nav, Navbar } from "react-bootstrap";
 

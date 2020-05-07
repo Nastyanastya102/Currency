@@ -1,15 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//Botstrap
-import Table from 'react-bootstrap/Table';
 
-export default function TableList({ dataFromAPI }) {
+import Table from 'react-bootstrap/Table';
+import star from '../../../img/star.png';
+
+export  const TableList = ({ dataFromAPI, filterList }) => {
   let tableRow = dataFromAPI.map((item, index) => {
     return (
-      <tr key={item[0]}>
+      <tr key={index}>
         <td>{index + 1}</td>
         <td>{item[0]}</td>
         <td>{item[1]}</td>
+        <td>
+          <img
+            src={star}
+            alt="add to favorite"
+            onClick={() => filterList(item, index)}
+          />
+        </td>
       </tr>
     );
   });

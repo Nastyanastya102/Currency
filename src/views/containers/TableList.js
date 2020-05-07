@@ -1,14 +1,20 @@
-//Redux
 import { connect } from 'react-redux';
-//Component
-import TableList from '../components/Table/TableList';
+import { bindActionCreators } from 'redux';
+
+import { TableList } from '../components/Table/TableList';
+import { filterList } from '../../redux/ducks/moduls/currencyApp';
 
 const mapStateToProps = ({
-  state: {
-    isLoad: { dataFromAPI },
-  },
+    gettingData: { dataFromAPI },
 }) => ({
   dataFromAPI,
 });
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      filterList,
+    },
+    dispatch
+  );
 
-export default connect(mapStateToProps, null)(TableList);
+export default connect(mapStateToProps, mapDispatchToProps)(TableList);

@@ -1,10 +1,9 @@
 import React from 'react';
-//Bootstrap
-import { Container } from 'react-bootstrap';
-//Components
+
 import { ListItem } from './List/ListItem';
-import List from './List/List';
-//Styled
+import { List } from './List/List';
+
+import { Container } from 'react-bootstrap';
 import {
   FooterTop,
   FooterBottom,
@@ -12,7 +11,7 @@ import {
   FooterTitle,
 } from './FooterStyle';
 
-let dataForItems = [
+const dataForItems = [
   {
     top: [
       ['#', '#', '#', '#'],
@@ -32,7 +31,7 @@ let dataForItems = [
   },
 ];
 
-export function Footer() {
+export const Footer = () => {
   return (
     <Container fluid>
       <FooterTop>

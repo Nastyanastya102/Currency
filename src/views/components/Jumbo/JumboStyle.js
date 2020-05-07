@@ -1,7 +1,5 @@
-//Styled
 import styled from 'styled-components';
 import { Jumbotron, Container } from 'react-bootstrap';
-//Background
 import Url from '../../../img/bc-money.jpg';
 
 export const ArbitraryComponent = styled(Jumbotron)`

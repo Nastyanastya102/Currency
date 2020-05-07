@@ -1,6 +1,5 @@
-import * as types from '../index';
-import { gettingData, getSum } from '../reducers';
-const { dataTypes } = types;
+import * as types from '../currencyApp';
+const { gettingData, getSum  } = types;
 
 describe('should return the new state', () => {
   const state = {
@@ -11,6 +10,7 @@ describe('should return the new state', () => {
     formGridTo: '',
     date: '',
     inputText: 0,
+    filtered: [],
   };
   const successState = {
     ...state,
@@ -30,7 +30,7 @@ describe('should return the new state', () => {
   it('should handle FETCH_PRODUCTS_PENDING', () => {
     expect(
       gettingData(state, {
-        type: dataTypes.FETCH_PRODUCTS_PENDING,
+        type: types.FETCH_PRODUCTS_PENDING,
       })
     ).toEqual({ ...state, pending: true });
   });
@@ -38,7 +38,7 @@ describe('should return the new state', () => {
   it('should handle FETCH_PRODUCTS_SUCCESS', () => {
     expect(
       gettingData(state, {
-        type: dataTypes.FETCH_PRODUCTS_SUCCESS,
+        type: types.FETCH_PRODUCTS_SUCCESS,
         data: {
           rates: { AUD: 1.6598, BGN: 1.9558 },
           base: 'EUR',
@@ -51,7 +51,7 @@ describe('should return the new state', () => {
   it('should handle FETCH_PRODUCTS_ERROR', () => {
     expect(
       gettingData(state, {
-        type: dataTypes.FETCH_PRODUCTS_ERROR,
+        type: types.FETCH_PRODUCTS_ERROR,
       })
     ).toEqual({ ...state, error: true });
   });
@@ -59,7 +59,7 @@ describe('should return the new state', () => {
   it('sould return GET_TEXT_INPUT', () => {
     expect(
       gettingData(state, {
-        type: dataTypes.GET_TEXT_INPUT,
+        type: types.GET_TEXT_INPUT,
         value: '100',
       })
     ).toEqual({ ...state, inputText: 100 });
@@ -68,7 +68,7 @@ describe('should return the new state', () => {
   it('sould return SET_TO_CURRENCY', () => {
     expect(
       gettingData(state, {
-        type: dataTypes.SET_TO_CURRENCY,
+        type: types.SET_TO_CURRENCY,
         value: 'CAD',
         id: 'formGridFrome',
       })
@@ -86,7 +86,7 @@ describe('should return right sum', () => {
       getSum(
         { sum: 0 },
         {
-          type: dataTypes.GET_SUM,
+          type: types.GET_SUM,
           value1: 10,
           value2: 15,
           value3: 20,

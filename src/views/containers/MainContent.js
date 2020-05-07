@@ -1,23 +1,23 @@
 //Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-//Action
-import operation from '../../state/ducks/currency/operation';
-//Component
+
+import { getTextInput, getSumValue, setToCur, fetchProductsPending } from '../../redux/ducks/moduls/currencyApp';
+
 import mainContent from '../components/MainContent/MainContent';
 
-const mapStateToProps = ({ state: { isLoad, sum } }) => ({
-  isLoad,
-  sum,
+const mapStateToProps = ({ gettingData, getSum }) => ({
+  gettingData,
+  sum: getSum,
 });
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
-      getTextInput: operation.getTextInput,
-      getSum: operation.getSum,
-      setToCur: operation.setToCur,
-      fetchProductsPending: operation.fetchProductsPending,
+      getTextInput,
+      getSumValue,
+      setToCur,
+      fetchProductsPending,
     },
     dispatch
   );
