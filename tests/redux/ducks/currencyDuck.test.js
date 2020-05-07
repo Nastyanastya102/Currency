@@ -1,8 +1,8 @@
-import { fetchData, watchWork, watchLoadData } from '../currencyDuck';
+import { fetchData, watchWork, watchLoadData } from '../../../src/redux/ducks/currency/currencyDuck';
 import { takeEvery, put, call } from 'redux-saga/effects';
 
-import * as types from '../currencyDuck';
-import { default as func } from '../currencyDuck';
+import * as types from '../../../src/redux/ducks/currency/currencyDuck';
+import { default as func } from '../../../src/redux/ducks/currency/currencyDuck';
 
 describe('should return right value from all action creators', () => {
   const sum = (typ) => {
