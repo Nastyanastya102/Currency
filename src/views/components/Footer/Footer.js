@@ -9,7 +9,7 @@ import {
   FooterBottom,
   FooterHeader,
   FooterTitle,
-} from './FooterStyle';
+} from '../../styles/FooterStyle';
 
 const dataForItems = [
   {

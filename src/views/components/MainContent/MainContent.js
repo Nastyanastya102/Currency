@@ -6,38 +6,29 @@ import { Input } from './Input/Input';
 
 import { Form } from 'react-bootstrap';
 
-export default class Content extends React.Component {
+const Content  = ( props ) => {
+  const {
+    gettingData: { pending, dataFromAPI , formGridFrome, formGridTo, inputText },
+    getTextInput,setToCur, getSumValue,
+  } = props;
   
-  handleChangeInput = (event) => {
-    const { getTextInput } = this.props;
-
+ const handleChangeInput = (event) => {
     if (!isNaN(event.target.value)) {
       getTextInput(event.target.value);
     }
   };
 
-  handleChange = (event) => {
-    const { setToCur, getSumValue } = this.props;
+  const handleChange = (event) => {
     setToCur(event.target.selectedOptions[0].text, event.target.id);
     getSumValue(0, 0, 0);
   };
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const {
-      getTextInput,
-      getSumValue,
-      gettingData: { dataFromAPI, formGridFrome, formGridTo, inputText },
-    } = this.props;
-
-    const obj = Object.fromEntries(dataFromAPI);
+   const obj = Object.fromEntries(dataFromAPI);
     getSumValue(inputText, obj[formGridFrome], obj[formGridTo], formGridFrome);
     getTextInput('');
-  };
-  render() {
-    const {
-      gettingData: { pending, dataFromAPI, formGridFrome, formGridTo, inputText },
-    } = this.props;
+  }
 
     if (pending) return <p>Loading...</p>;
     const list = dataFromAPI.map((key, index) => (
@@ -47,7 +38,7 @@ export default class Content extends React.Component {
     ));
 
     return (
-      <Form onSubmit={(e) => this.handleSubmit(e)}>
+      <Form onSubmit={(e) => handleSubmit(e)}>
         <Form.Row>
           <Input
             controlId="formGridInput"
@@ -55,7 +46,7 @@ export default class Content extends React.Component {
             as="input"
             placeholder="Enter value"
             value={inputText}
-            event={(event) => this.handleChangeInput(event)}
+            event={(event) => handleChangeInput(event)}
           />
 
           <Input
@@ -65,7 +56,7 @@ export default class Content extends React.Component {
             value={formGridFrome}
             name="from"
             list={list}
-            event={(event) => this.handleChange(event)}
+            event={(event) => handleChange(event)}
           />
 
           <Input
@@ -75,14 +66,15 @@ export default class Content extends React.Component {
             value={formGridTo}
             name="to"
             list={list}
-            event={(event) => this.handleChange(event)}
+            event={(event) => handleChange(event)}
           />
         </Form.Row>
         <Sum />
       </Form>
     );
   }
-}
+
+export default Content;
 
 Content.propTypes = {
   gettingData: PropTypes.shape({

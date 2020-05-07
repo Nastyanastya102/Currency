@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import { Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Logo from "../../../img/money.svg";
+import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import Logo from '../../../img/money.svg';
 import {
   StyledLinkContainer,
   StyledButton,
   StyledSection,
-} from "./NavBarStyle";
+} from '../../styles/NavBarStyle';
 
 
 export const NavBar = () => {

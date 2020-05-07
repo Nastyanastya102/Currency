@@ -170,7 +170,7 @@ export default  {
 
 export async function fetchData() {
   try {
-    const response = await fetch("https://api.exchangeratesapi.io/latest");
+    const response = await fetch('https://api.exchangeratesapi.io/latest');
     const user = await response.json();
     return user;
   } catch (e) {

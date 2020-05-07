@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ArbitraryComponent, StyleContent, Header } from './JumboStyle';
+import { ArbitraryComponent, StyleContent, Header } from '../styles/JumboStyle';
 
 export const Jumbo = () => {
   return (

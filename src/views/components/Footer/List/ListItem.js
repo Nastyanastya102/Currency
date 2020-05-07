@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { ListGroup } from 'react-bootstrap';
-import { Footer, FooterTitle } from '../FooterStyle';
+import { Footer, FooterTitle } from '../../../styles/FooterStyle';
 
 export const ListItem = props => {
   let item = props.data[0].map((i, index) => (

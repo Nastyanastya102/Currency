@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { App } from '../App';
-import { fetchProductsPending } from '../../redux/ducks/moduls/currencyApp';
+import { fetchProductsPending } from '../../redux/ducks/currency/currencyDuck';
 
 
 const mapDispatchToProps = dispatch => bindActionCreators({

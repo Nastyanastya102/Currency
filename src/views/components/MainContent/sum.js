@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Total } from './MainContentStyle';
+import { Total } from '../../styles/MainContentStyle';
 
 import { Row, Col } from 'react-bootstrap';
 

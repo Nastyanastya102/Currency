@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getTextInput, getSumValue, setToCur, fetchProductsPending } from '../../redux/ducks/moduls/currencyApp';
+import { getTextInput, getSumValue, setToCur, fetchProductsPending } from '../../redux/ducks/currency/currencyDuck';
 
 import mainContent from '../components/MainContent/MainContent';
 

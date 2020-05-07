@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Table from 'react-bootstrap/Table';
-import star from '../../../img/star.png';
+import star from '../../img/star.png';
 
 export  const TableList = ({ dataFromAPI, filterList }) => {
   let tableRow = dataFromAPI.map((item, index) => {

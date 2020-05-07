@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import expect from 'expect';
 
-import Content from '../MainContent';
+import Content from '../../../../src/views/components/MainContent/MainContent';
 
 const props = {
   gettingData: {

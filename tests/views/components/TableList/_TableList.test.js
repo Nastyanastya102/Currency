@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import expect from 'expect';
 
-import TableList from '../TableList';
+import TableList from '../../../../src/views/components/TableList';
 
 const props = {
   dataFromAPI: [

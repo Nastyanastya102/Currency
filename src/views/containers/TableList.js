@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { TableList } from '../components/Table/TableList';
-import { filterList } from '../../redux/ducks/moduls/currencyApp';
+import { TableList } from '../components/TableList';
+import { filterList } from '../../redux/ducks/currency/currencyDuck';
 
 const mapStateToProps = ({
     gettingData: { dataFromAPI },

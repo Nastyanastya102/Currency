@@ -18,7 +18,7 @@ export const FooterBottom = styled(Row)`
 
 export const FooterTitle = styled.h5` 
   font-family: 'Baloo Tamma 2', cursive;
-  font-size: ${props => props.more ? "2.3rem;" : "1.7rem;"};
+  font-size: ${props => props.more ? '2.3rem;' : '1.7rem;'};
   text-align: center;
 `;
 

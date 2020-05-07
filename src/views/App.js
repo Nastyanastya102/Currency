@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter as Router,Switch, Route,} from 'react-router-dom';
+import { BrowserRouter as Router,Switch, Route,} from 'react-router-dom';
 
-import {NavBar} from './components/NavBar/NavBar';
-import {Jumbo} from './components/Jumbo/Jumbo';
-import {Footer} from './components/Footer/Footer.js';
+import { NavBar } from './components/NavBar/NavBar';
+import { Jumbo } from './components/Jumbo';
+import { Footer } from './components/Footer/Footer.js';
 import Content from './containers/MainContent';
 import TableList from './containers/TableList.js';
 
@@ -20,30 +20,29 @@ const StyledSection = styled(Container)`
 `;
 
 
-export  class App extends React.Component { 
-  componentDidMount() {      
-    this.props.fetchProductsPending();   
-   }
-   
-  render(){
-    return (   
-      <StyledContainer>   
-          <Router>
-            <NavBar/>
-            <Jumbo/>
-            <StyledSection>
-              <Switch>
-                <Route path="/actual" component={TableList}/>
-                <Route exact path="/" component={Content}/>             
-              </Switch>
-            </StyledSection>
-          </Router>
-          <Footer/>
-      </StyledContainer> 
-    );
-  }
-};
+export const App = ( props ) => {
+  let { fetchProductsPending } = props;
+  
+  useEffect(()=> {
+    fetchProductsPending(); 
+  },[fetchProductsPending]);
 
+  return (   
+    <StyledContainer>   
+        <Router>
+          <NavBar/>
+          <Jumbo/>
+          <StyledSection>
+            <Switch>
+              <Route path="/actual" component={TableList}/>
+              <Route exact path="/" component={Content}/>             
+            </Switch>
+          </StyledSection>
+        </Router>
+        <Footer/>
+    </StyledContainer> 
+  );
+}
 
 App.propTypes = {
   fetchProductsPending: PropTypes.func.isRequired,

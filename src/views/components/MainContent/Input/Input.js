@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Form, Col } from 'react-bootstrap';
-import { StyleForFormHead } from '../MainContentStyle';
+import { StyleForFormHead } from '../../../styles/MainContentStyle';
 
 export const Input = props => {
   return (
