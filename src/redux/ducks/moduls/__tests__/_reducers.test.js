@@ -1,5 +1,5 @@
-import * as types from '../currencyApp';
-const { gettingData, getSum  } = types;
+import { default as func } from '../currencyApp';
+import * as types from '../currencyApp'
 
 describe('should return the new state', () => {
   const state = {
@@ -24,12 +24,12 @@ describe('should return the new state', () => {
     formGridTo: 'AUD',
   };
   it('should return the initial state', () => {
-    expect(gettingData(undefined, {})).toEqual(state);
+    expect(func.gettingData(undefined, {})).toEqual(state);
   });
 
   it('should handle FETCH_PRODUCTS_PENDING', () => {
     expect(
-      gettingData(state, {
+      func.gettingData(state, {
         type: types.FETCH_PRODUCTS_PENDING,
       })
     ).toEqual({ ...state, pending: true });
@@ -37,7 +37,7 @@ describe('should return the new state', () => {
 
   it('should handle FETCH_PRODUCTS_SUCCESS', () => {
     expect(
-      gettingData(state, {
+      func.gettingData(state, {
         type: types.FETCH_PRODUCTS_SUCCESS,
         data: {
           rates: { AUD: 1.6598, BGN: 1.9558 },
@@ -50,7 +50,7 @@ describe('should return the new state', () => {
 
   it('should handle FETCH_PRODUCTS_ERROR', () => {
     expect(
-      gettingData(state, {
+      func.gettingData(state, {
         type: types.FETCH_PRODUCTS_ERROR,
       })
     ).toEqual({ ...state, error: true });
@@ -58,7 +58,7 @@ describe('should return the new state', () => {
 
   it('sould return GET_TEXT_INPUT', () => {
     expect(
-      gettingData(state, {
+      func.gettingData(state, {
         type: types.GET_TEXT_INPUT,
         value: '100',
       })
@@ -67,7 +67,7 @@ describe('should return the new state', () => {
 
   it('sould return SET_TO_CURRENCY', () => {
     expect(
-      gettingData(state, {
+      func.gettingData(state, {
         type: types.SET_TO_CURRENCY,
         value: 'CAD',
         id: 'formGridFrome',
@@ -78,12 +78,12 @@ describe('should return the new state', () => {
 
 describe('should return right sum', () => {
   it('should return the initial state', () => {
-    expect(getSum(undefined, {})).toEqual({ sum: 0 });
+    expect(func.getSum(undefined, {})).toEqual({ sum: 0 });
   });
 
   it('should return GET_SUM for EUR', () => {
     expect(
-      getSum(
+      func.getSum(
         { sum: 0 },
         {
           type: types.GET_SUM,

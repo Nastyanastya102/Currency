@@ -1,8 +1,7 @@
-import * as types from '../index';
-import { fetchData, watchWork, watchLoadData } from '../../../react-saga';
+import * as types from '../currencyApp';
+import { fetchData, watchWork, watchLoadData } from '../currencyApp';
 import { takeEvery, put, call } from 'redux-saga/effects';
 
-const { dataTypes } = types;
 
 describe('All sagas', () => {
   beforeEach(() => {
@@ -30,7 +29,7 @@ describe('All sagas', () => {
     const generator = watchLoadData();
 
     expect(generator.next().value).toEqual(
-      takeEvery(dataTypes.FETCH_PRODUCTS_PENDING, watchWork)
+      takeEvery(types.FETCH_PRODUCTS_PENDING, watchWork)
     );
     expect(generator.next().done).toBeTruthy();
   });
@@ -47,13 +46,13 @@ describe('All sagas', () => {
 
     expect(generator.next(data).value).toEqual(
       put({
-        type: dataTypes.FETCH_PRODUCTS_SUCCESS,
+        type: types.FETCH_PRODUCTS_SUCCESS,
         data: data,
       })
     );
     expect(generator.throw('error').value).toEqual(
       put({
-        type: dataTypes.FETCH_PRODUCTS_ERROR,
+        type: types.FETCH_PRODUCTS_ERROR,
       })
     );
     expect(generator.next().done).toBeTruthy();

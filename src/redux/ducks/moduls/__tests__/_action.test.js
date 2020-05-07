@@ -1,7 +1,7 @@
 import * as types from '../currencyApp';
 
 describe('should return right value from all action creators', () => {
-  const sum = (typ, currency) => {
+  const sum = (typ) => {
     return { type: typ, value1: 10, value2: 10, value3: 10, currency: 'EUR' };
   };
 
