@@ -2,15 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Sum from '../../containers/SumStore';
-import { Input } from './Input/Input';
+import { Input } from './Input';
 
 import { Form } from 'react-bootstrap';
 
-const Content  = ( props ) => {
-  const {
-    gettingData: { pending, dataFromAPI , formGridFrome, formGridTo, inputText },
-    getTextInput,setToCur, getSumValue,
-  } = props;
+const Content  = ( { gettingData, getTextInput,setToCur, getSumValue} ) => {
+
   
  const handleChangeInput = (event) => {
     if (!isNaN(event.target.value)) {
@@ -25,13 +22,16 @@ const Content  = ( props ) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   const obj = Object.fromEntries(dataFromAPI);
-    getSumValue(inputText, obj[formGridFrome], obj[formGridTo], formGridFrome);
+   const obj = Object.fromEntries(gettingData.dataFromAPI);
+    getSumValue(gettingData.inputText,
+      obj[gettingData.formGridFrome],
+      obj[gettingData.formGridTo],
+      gettingData.formGridFrome);
     getTextInput('');
   }
 
-    if (pending) return <p>Loading...</p>;
-    const list = dataFromAPI.map((key, index) => (
+    if (gettingData.pending) return <p>Loading...</p>;
+    const list = gettingData.dataFromAPI.map((key, index) => (
       <option key={index} value={key[0]}>
         {key[0]}
       </option>
@@ -45,7 +45,7 @@ const Content  = ( props ) => {
             text="Amount"
             as="input"
             placeholder="Enter value"
-            value={inputText}
+            value={gettingData.inputText}
             event={(event) => handleChangeInput(event)}
           />
 
@@ -53,7 +53,7 @@ const Content  = ( props ) => {
             controlId="formGridFrome"
             text="Base"
             as="select"
-            value={formGridFrome}
+            value={gettingData.formGridFrome}
             name="from"
             list={list}
             event={(event) => handleChange(event)}
@@ -63,7 +63,7 @@ const Content  = ( props ) => {
             controlId="formGridTo"
             text="To"
             as="select"
-            value={formGridTo}
+            value={gettingData.formGridTo}
             name="to"
             list={list}
             event={(event) => handleChange(event)}
@@ -89,5 +89,4 @@ Content.propTypes = {
   setToCur: PropTypes.func.isRequired,
   getTextInput: PropTypes.func.isRequired,
   getSumValue: PropTypes.func.isRequired,
-  fetchProductsPending: PropTypes.func.isRequired,
 };

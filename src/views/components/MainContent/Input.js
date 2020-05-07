@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Form, Col } from 'react-bootstrap';
-import { StyleForFormHead } from '../../../styles/MainContentStyle';
+import { StyleForFormHead } from '../../styles/MainContentStyle';
 
-export const Input = props => {
+export const Input = ({as, controlId, text, value, placeholder, name, event, list}) => {
   return (
-    <Form.Group as={Col} controlId={props.controlId}>
+    <Form.Group as={Col} controlId={controlId}>
       <StyleForFormHead>
-        {props.text === 'Base' ? `${props.text} = ${props.value}` : props.text}
+        {text === 'Base' ? `${text} = ${value}` : text}
       </StyleForFormHead>
       <Form.Control
-        as={props.as}
-        placeholder={props.placeholder}
-        name={props.name}
-        value={props.value}
-        onChange={props.event}
+        as={as}
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={event}
       >
-        {props.as === 'input' ? null : props.list}
+        {as === 'input' ? null : list}
       </Form.Control>
     </Form.Group>
   );

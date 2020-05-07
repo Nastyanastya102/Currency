@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router,Switch, Route,} from 'react-router-dom';
 
-import { NavBar } from './components/NavBar/NavBar';
+import { NavBar } from './components/NavBar';
 import { Jumbo } from './components/Jumbo';
 import { Footer } from './components/Footer/Footer.js';
 import Content from './containers/MainContent';

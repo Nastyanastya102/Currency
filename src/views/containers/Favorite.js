@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { TableList } from '../components/TableList/TableList';
+import Favorite  from '../components/TableList/Favorite';
 import { filterList } from '../../redux/ducks/currency/currencyDuck';
 
 const mapStateToProps = ({gettingData}) => ({
   gettingData,
 });
+
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
@@ -14,5 +15,4 @@ const mapDispatchToProps = (dispatch) =>
     },
     dispatch
   );
-
-export default connect(mapStateToProps, mapDispatchToProps)(TableList);
+export default connect(mapStateToProps, mapDispatchToProps)(Favorite);

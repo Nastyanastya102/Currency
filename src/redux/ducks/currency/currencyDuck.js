@@ -37,11 +37,11 @@ export const setToCur = (value, id) => {
   };
 }
 
-export const filterList = (payload, index) => {
+export const filterList = (index, item) => {
   return {
     type: GET_FILTERED_ITEMS,
-    payload,
     index,
+    item,
   };
 }
 
@@ -93,14 +93,16 @@ export const sumFunc = arg => {
   return sum;
 }
 
-const filter = (data, index, dataFromAPI) => {
-  console.log(data);
-  console.log(index);
-  console.log(dataFromAPI);
-
-  return dataFromAPI;
+const filter = (index, data) => {
+  let state = data;
+ state.dataFromAPI.splice(index, 1);
+  return state.dataFromAPI;
 }
 
+function favorite(item, array) {
+let favoriteItem = [...array,item];
+  return favoriteItem;
+}
 const gettingData = (state = initialStateGetData, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
@@ -138,7 +140,8 @@ const gettingData = (state = initialStateGetData, action) => {
     case GET_FILTERED_ITEMS:
       return {
         ...state,
-        dataFromAPI: filter(action.payload, action.index, state.dataFromAPI),
+        dataFromAPI: filter(action.index, state),
+        filtered: favorite(action.item, state.filtered)
       };
     default:
       return state;
@@ -169,8 +172,9 @@ export default  {
 /* Saga */
 
 export async function fetchData() {
+  const url = 'https://api.exchangeratesapi.io/latest';
   try {
-    const response = await fetch('https://api.exchangeratesapi.io/latest');
+    const response = await fetch(url);
     const user = await response.json();
     return user;
   } catch (e) {
