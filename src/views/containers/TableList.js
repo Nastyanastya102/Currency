@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { TableList } from '../components/TableList/TableList';
 import { filterList } from '../../redux/ducks/currency/currencyDuck';
 
-const mapStateToProps = ({gettingData}) => ({
+const mapStateToProps = ({ gettingData }) => ({
   gettingData,
 });
 const mapDispatchToProps = (dispatch) =>

@@ -1,14 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Form, Col } from 'react-bootstrap';
 import { StyleForFormHead } from '../../styles/MainContentStyle';
 
-export const Input = ({as, controlId, text, value, placeholder, name, event, list}) => {
+export const Input = ({ as, controlId, text, value, placeholder, name, event, list }) => {
   return (
     <Form.Group as={Col} controlId={controlId}>
       <StyleForFormHead>
-        {text === 'Base' ? `${text} = ${value}` : text}
+        {text === 'Base' ? `${ text } = ${ value }` : text}
       </StyleForFormHead>
       <Form.Control
         as={as}
@@ -21,7 +22,7 @@ export const Input = ({as, controlId, text, value, placeholder, name, event, lis
       </Form.Control>
     </Form.Group>
   );
-}
+};
 
 Input.propTypes = {
   controlId: PropTypes.string.isRequired,

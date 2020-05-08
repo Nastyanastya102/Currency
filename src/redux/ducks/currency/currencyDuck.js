@@ -19,7 +19,7 @@ export const getTextInput = value => {
     type: GET_TEXT_INPUT,
     value,
   };
-}
+};
 
 export const getSumValue = (value1, value2, value3, currency) => {
   return {
@@ -29,7 +29,7 @@ export const getSumValue = (value1, value2, value3, currency) => {
     value3,
     currency,
   };
-}
+};
 
 export const setToCur = (value, id) => {
   return {
@@ -37,15 +37,15 @@ export const setToCur = (value, id) => {
     value,
     id,
   };
-}
+};
 
-export const filterList = (item,index) => {
+export const filterList = (item, index) => {
   return {
     type: GET_FILTERED_ITEMS,
     item,
     index
   };
-}
+};
 
 /* Request actions */
 
@@ -53,7 +53,7 @@ export const fetchProductsPending = () => {
   return {
     type: FETCH_PRODUCTS_PENDING,
   };
-}
+};
 
 export const fetchProductsSuccess = (dataFromAPI, formGridFrome, date, formGridTo) => {
   return {
@@ -63,13 +63,13 @@ export const fetchProductsSuccess = (dataFromAPI, formGridFrome, date, formGridT
     formGridTo,
     date,
   };
-}
+};
 
 export const fetchProductsError = () => {
   return {
     type: FETCH_PRODUCTS_ERROR,
   };
-}
+};
 
 
 /* Reducers */
@@ -93,30 +93,30 @@ export const sumFunc = arg => {
         2
       ));
   return sum;
-}
+};
 
 const filter = (data) => {
 const map = [];
- for (let key in data) {
-    map.push( { key: key, value: data[key], star: false })
+ for (const key in data) {
+    map.push({ key: key, value: data[key], star: false });
  }
- map.push( {key: 'EUR', value: 1, star: false});
+ map.push({key: 'EUR', value: 1, star: false});
  return map;
-}
+};
 
-function favorite(item,index,data) {
+const favorite = (item, index, data) => {
   const newState = {
     ...data
   };
 
-  newState.dataFromAPI.splice(index,1);
+  newState.dataFromAPI.splice(index, 1);
   if (!item.star) {
    newState.dataFromAPI.unshift({ ...item, star: true});
-  }else{
+  } else {
     newState.dataFromAPI.push({ ...item, star: false});
   }
-  return newState.dataFromAPI
-}
+  return newState.dataFromAPI;
+};
 
 
 const gettingData = (state = initialStateGetData, action) => {
@@ -153,12 +153,12 @@ const gettingData = (state = initialStateGetData, action) => {
     case GET_FILTERED_ITEMS:
       return {
         ...state,
-        dataFromAPI: favorite(action.item, action.index,state)
+        dataFromAPI: favorite(action.item, action.index, state)
       };
     default:
       return state;
   }
-}
+};
 
 
  const getSum = (state = { sum: 0 }, action) => {
@@ -171,7 +171,7 @@ const gettingData = (state = initialStateGetData, action) => {
     default:
       return state;
   }
-}
+};
 
 
 
@@ -186,7 +186,7 @@ export async function fetchData() {
   } catch (e) {
     console.log(e);
   }
-}; 
+}
 
 export function* watchWork() {
   try {
@@ -199,18 +199,18 @@ export function* watchWork() {
     yield put({ type: FETCH_PRODUCTS_ERROR });
     console.log(error);
   }
-};
+}
 
 export function* watchLoadData() {
   yield takeEvery(FETCH_PRODUCTS_PENDING, watchWork);
-};
+}
 
 export function* rootSaga() {
   yield watchLoadData();
-};
+}
 
 
-export default  {
+export default {
   gettingData,
   getSum
 };

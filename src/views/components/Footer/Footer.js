@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 import { ListItem } from './List/ListItem';
@@ -52,4 +53,4 @@ export const Footer = () => {
       <FooterBottom className="text-center">© 2020</FooterBottom>
     </Container>
   );
-}
+};

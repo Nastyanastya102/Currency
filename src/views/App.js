@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router,Switch, Route,} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import { NavBar } from './components/NavBar';
 import { Jumbo } from './components/Jumbo';
@@ -23,9 +24,9 @@ const StyledSection = styled(Container)`
 export const App = ( props ) => {
   let { fetchProductsPending } = props;
   
-  useEffect(()=> {
+  useEffect(() => {
     fetchProductsPending(); 
-  },[fetchProductsPending]);
+  }, [fetchProductsPending]);
 
   return (   
     <StyledContainer>   

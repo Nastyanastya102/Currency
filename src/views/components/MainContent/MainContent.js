@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -6,7 +7,7 @@ import { Input } from './Input';
 
 import { Form } from 'react-bootstrap';
 
-const Content  = ( { gettingData, getTextInput,setToCur, getSumValue} ) => {
+const Content = ({ gettingData, getTextInput, setToCur, getSumValue}) => {
 
  const handleChangeInput = (event) => {
     if (!isNaN(event.target.value)) {
@@ -31,7 +32,7 @@ const Content  = ( { gettingData, getTextInput,setToCur, getSumValue} ) => {
       gettingData.formGridFrome
       );
     getTextInput('');
-  }
+  };
 
   if (gettingData.pending) return <p>Loading...</p>;
    const list = gettingData.dataFromAPI.map((item, index) => (
@@ -75,20 +76,20 @@ const Content  = ( { gettingData, getTextInput,setToCur, getSumValue} ) => {
         <Sum /> 
       </Form>
     );
-  }
+  };
 
 export default Content;
 
 Content.propTypes = {
+  getSumValue: PropTypes.func.isRequired,
+  getTextInput: PropTypes.func.isRequired,
+  setToCur: PropTypes.func.isRequired,
   gettingData: PropTypes.shape({
     date: PropTypes.string.isRequired,
     error: PropTypes.bool.isRequired,
     formGridFrome: PropTypes.string.isRequired,
     formGridTo: PropTypes.string.isRequired,
     inputText: PropTypes.number.isRequired,
-    pending: PropTypes.bool.isRequired,
+    pending: PropTypes.bool.isRequired
   }),
-  setToCur: PropTypes.func.isRequired,
-  getTextInput: PropTypes.func.isRequired,
-  getSumValue: PropTypes.func.isRequired,
 };

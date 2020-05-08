@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -11,10 +12,10 @@ const store = configureStore();
 
 const app = (
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={ store }>
       <App />
     </Provider>
   </React.StrictMode>
 );
-ReactDOM.render(app, document.getElementById("root"));
+ReactDOM.render(app, document.getElementById('root'));
 
