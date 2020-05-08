@@ -3,7 +3,7 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { Star } from './Icon';
   
-export  const TableList = ({gettingData, filterList }) => {
+export const TableList = ({ gettingData, filterList }) => {
   const list = gettingData.dataFromAPI.map((key, index) => (
     <tr key={key.key}>
       <td>{index + 1}</td>
@@ -31,5 +31,5 @@ export  const TableList = ({gettingData, filterList }) => {
       </tbody>
     </Table>
   );
-}
+};
 

@@ -5,7 +5,7 @@ import { ListGroup } from 'react-bootstrap';
 import { Footer, FooterTitle } from '../../../styles/FooterStyle';
 
 export const ListItem = props => {
-  let item = props.data[0].map((i, index) => (
+  const item = props.data[0].map((i, index) => (
     <ListGroup.Item action href={i} key={index}>
       {props.data[1][index]}
     </ListGroup.Item>

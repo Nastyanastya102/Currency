@@ -1,8 +1,6 @@
-import { fetchData, watchWork, watchLoadData } from '../../../src/redux/ducks/currency/currencyDuck';
 import { takeEvery, put, call } from 'redux-saga/effects';
 
 import * as types from '../../../src/redux/ducks/currency/currencyDuck';
-import { default as func } from '../../../src/redux/ducks/currency/currencyDuck';
 
 describe('should return right value from all action creators', () => {
   const sum = (typ) => {
@@ -80,12 +78,12 @@ describe('should return the new state', () => {
     formGridTo: 'AUD',
   };
   it('should return the initial state', () => {
-    expect(func.gettingData(undefined, {})).toEqual(state);
+    expect(types.gettingData(undefined, {})).toEqual(state);
   });
 
   it('should handle FETCH_PRODUCTS_PENDING', () => {
     expect(
-      func.gettingData(state, {
+      types.gettingData(state, {
         type: types.FETCH_PRODUCTS_PENDING,
       })
     ).toEqual({ ...state, pending: true });
@@ -93,7 +91,7 @@ describe('should return the new state', () => {
 
   it('should handle FETCH_PRODUCTS_SUCCESS', () => {
     expect(
-      func.gettingData(state, {
+      types.gettingData(state, {
         type: types.FETCH_PRODUCTS_SUCCESS,
         data: {
           rates: { AUD: 1.6598, BGN: 1.9558 },
@@ -106,7 +104,7 @@ describe('should return the new state', () => {
 
   it('should handle FETCH_PRODUCTS_ERROR', () => {
     expect(
-      func.gettingData(state, {
+      types.gettingData(state, {
         type: types.FETCH_PRODUCTS_ERROR,
       })
     ).toEqual({ ...state, error: true });
@@ -114,7 +112,7 @@ describe('should return the new state', () => {
 
   it('sould return GET_TEXT_INPUT', () => {
     expect(
-      func.gettingData(state, {
+      types.gettingData(state, {
         type: types.GET_TEXT_INPUT,
         value: '100',
       })
@@ -123,7 +121,7 @@ describe('should return the new state', () => {
 
   it('sould return SET_TO_CURRENCY', () => {
     expect(
-      func.gettingData(state, {
+      types.gettingData(state, {
         type: types.SET_TO_CURRENCY,
         value: 'CAD',
         id: 'formGridFrome',
@@ -134,12 +132,12 @@ describe('should return the new state', () => {
 
 describe('should return right sum', () => {
   it('should return the initial state', () => {
-    expect(func.getSum(undefined, {})).toEqual({ sum: 0 });
+    expect(types.getSum(undefined, {})).toEqual({ sum: 0 });
   });
 
   it('should return GET_SUM for EUR', () => {
     expect(
-      func.getSum(
+      types.getSum(
         { sum: 0 },
         {
           type: types.GET_SUM,
@@ -169,7 +167,7 @@ describe('All sagas', () => {
         )
     );
     try {
-      const res = await fetchData();
+      const res = await types.fetchData();
       expect(res.data).toEqual('12345');
       expect(fetch.mock.calls.length).toBe(1);
     } catch (error) {
@@ -179,23 +177,23 @@ describe('All sagas', () => {
   });
 
   it('Should call watchLoadData and put FETCH_PRODUCTS_PENDING action ', () => {
-    const generator = watchLoadData();
+    const generator = types.watchLoadData();
 
     expect(generator.next().value).toEqual(
-      takeEvery(types.FETCH_PRODUCTS_PENDING, watchWork)
+      takeEvery(types.FETCH_PRODUCTS_PENDING, types.watchWork)
     );
     expect(generator.next().done).toBeTruthy();
   });
 
   it('Should call watchWork and put FETCH_PRODUCTS_SUCCESS or FETCH_PRODUCTS_ERROR action', () => {
-    const generator = watchWork();
+    const generator = types.watchWork();
     const data = {
       rates: { AUD: 1.6598, BGN: 1.9558 },
       base: 'EUR',
       date: '2020-04-30',
     };
 
-    expect(generator.next().value).toEqual(call(fetchData));
+    expect(generator.next().value).toEqual(call(types.fetchData));
 
     expect(generator.next(data).value).toEqual(
       put({

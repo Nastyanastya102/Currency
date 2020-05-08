@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Row, Col } from 'react-bootstrap';
 
 
-export const FooterTop = styled(Row)`
+export const FooterTop = styled(Row) `
   background-color: #45a6ba;
   padding: 2% 1%;
   font-weight: 600;
 `;
 
-export const FooterBottom = styled(Row)`
+export const FooterBottom = styled(Row) `
    background-color: #0970c2;
    padding: 12px 0;
    justify-content: center;
@@ -16,18 +16,18 @@ export const FooterBottom = styled(Row)`
    font-weight: 700;
 `;
 
-export const FooterTitle = styled.h5` 
+export const FooterTitle = styled.h5 ` 
   font-family: 'Baloo Tamma 2', cursive;
-  font-size: ${props => props.more ? '2.3rem;' : '1.7rem;'};
+  font-size: ${ props => props.more ? '2.3rem;' : '1.7rem;' };
   text-align: center;
 `;
 
-export const FooterHeader = styled(Col)` 
+export const FooterHeader = styled(Col) ` 
   align-self: center;
 `;
 
 
-export const Footer = styled.div` 
+export const Footer = styled.div ` 
     .list-group-item, .list-group-item:last-child, .list-group-item.active{
         padding: .25rem 1.25rem;
         background-color: transparent;

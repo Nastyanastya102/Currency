@@ -7,7 +7,7 @@ import { filterList } from '../../redux/ducks/currency/currencyDuck';
 const mapStateToProps = ({ gettingData }) => ({
   gettingData,
 });
-const mapDispatchToProps = (dispatch) =>
+const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       filterList,

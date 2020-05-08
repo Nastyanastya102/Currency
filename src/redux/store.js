@@ -2,8 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 
-import { rootSaga } from './ducks/currency/currencyDuck';
-import  reducers from './ducks/currency/currencyDuck'; 
+import reducers, { rootSaga } from './ducks/currency/currencyDuck';
 
 
 //Func witch create store

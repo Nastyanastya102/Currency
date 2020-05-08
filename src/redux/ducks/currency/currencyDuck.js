@@ -10,6 +10,7 @@ export const SET_TO_CURRENCY = 'my-app/gettingSum/SET_TO_CURRENCY';
 
 export const GET_FILTERED_ITEMS = 'my-app/gettingList/GET_FILTERED_ITEMS';
 
+const GET_CURRENCY_RATE = 'https://api.exchangeratesapi.io/latest';
 
 
 /* Actions */
@@ -100,7 +101,7 @@ const map = [];
  for (const key in data) {
     map.push({ key: key, value: data[key], star: false });
  }
- map.push({key: 'EUR', value: 1, star: false});
+ map.push({ key: 'EUR', value: 1, star: false });
  return map;
 };
 
@@ -110,10 +111,10 @@ const favorite = (item, index, data) => {
   };
 
   newState.dataFromAPI.splice(index, 1);
-  if (!item.star) {
-   newState.dataFromAPI.unshift({ ...item, star: true});
+  if (item.star) {
+    newState.dataFromAPI.push({ ...item, star: false });
   } else {
-    newState.dataFromAPI.push({ ...item, star: false});
+   newState.dataFromAPI.unshift({ ...item, star: true });
   }
   return newState.dataFromAPI;
 };
@@ -153,7 +154,7 @@ const gettingData = (state = initialStateGetData, action) => {
     case GET_FILTERED_ITEMS:
       return {
         ...state,
-        dataFromAPI: favorite(action.item, action.index, state)
+        dataFromAPI: favorite(action.item, action.index, state),
       };
     default:
       return state;
@@ -177,16 +178,15 @@ const gettingData = (state = initialStateGetData, action) => {
 
 /* Saga */
 
-export async function fetchData() {
-  const url = 'https://api.exchangeratesapi.io/latest';
+export const fetchData = async () => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(GET_CURRENCY_RATE);
     const user = await response.json();
     return user;
   } catch (e) {
     console.log(e);
   }
-}
+};
 
 export function* watchWork() {
   try {
@@ -214,3 +214,4 @@ export default {
   gettingData,
   getSum
 };
+
