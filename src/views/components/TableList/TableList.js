@@ -1,32 +1,23 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Table from 'react-bootstrap/Table';
 import { Star } from './Icon';
-import  Favorite   from '../../containers/Favorite'
-        
-        console.log();
-
+  
 export  const TableList = ({gettingData, filterList }) => {
-
-  let tableRow = gettingData.dataFromAPI.map((item, index) => {
-    return (
-      <tr key={index}>
-        <td>{index + 1}</td>
-        <td>{item[0]}</td>
-        <td>{item[1]}</td>
+  const list = gettingData.dataFromAPI.map((key, index) => (
+    <tr key={key.key}>
+      <td>{index + 1}</td>
+        <td>{key.key}</td>
+        <td>{key.value}</td>
         <td>
-          <i onClick={() => setTimeout(() => filterList(index, item),0)}>
-            <Star/>
+          <i onClick={() => setTimeout(() => filterList(key, index),0)}>
+              <Star color={key.star}/>
           </i>
         </td>
-      </tr>
-    );
-  });
-  
+    </tr>
+  ));
+
   return (
-    <>
-    <Favorite/>
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -36,13 +27,9 @@ export  const TableList = ({gettingData, filterList }) => {
         </tr>
       </thead>
       <tbody>
-        {tableRow}
+        {list}
       </tbody>
     </Table>
-    </>
   );
 }
 
-TableList.propTypes = {
-  gettingData: PropTypes.object.isRequired,
-};

@@ -8,7 +8,6 @@ import { Form } from 'react-bootstrap';
 
 const Content  = ( { gettingData, getTextInput,setToCur, getSumValue} ) => {
 
-  
  const handleChangeInput = (event) => {
     if (!isNaN(event.target.value)) {
       getTextInput(event.target.value);
@@ -22,20 +21,24 @@ const Content  = ( { gettingData, getTextInput,setToCur, getSumValue} ) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   const obj = Object.fromEntries(gettingData.dataFromAPI);
-    getSumValue(gettingData.inputText,
-      obj[gettingData.formGridFrome],
-      obj[gettingData.formGridTo],
-      gettingData.formGridFrome);
+     const from = gettingData.dataFromAPI.findIndex((currentValue) => currentValue.key === gettingData.formGridFrome);
+     const to = gettingData.dataFromAPI.findIndex((currentValue) => currentValue.key === gettingData.formGridTo);
+     
+    getSumValue(
+      gettingData.inputText,
+      gettingData.dataFromAPI[from].value,
+      gettingData.dataFromAPI[to].value,
+      gettingData.formGridFrome
+      );
     getTextInput('');
   }
 
-    if (gettingData.pending) return <p>Loading...</p>;
-    const list = gettingData.dataFromAPI.map((key, index) => (
-      <option key={index} value={key[0]}>
-        {key[0]}
-      </option>
-    ));
+  if (gettingData.pending) return <p>Loading...</p>;
+   const list = gettingData.dataFromAPI.map((item, index) => (
+    <option key={index} value={item.key}>
+      {item.key}
+    </option>
+  ));
 
     return (
       <Form onSubmit={(e) => handleSubmit(e)}>
@@ -69,7 +72,7 @@ const Content  = ( { gettingData, getTextInput,setToCur, getSumValue} ) => {
             event={(event) => handleChange(event)}
           />
         </Form.Row>
-        <Sum />
+        <Sum /> 
       </Form>
     );
   }
@@ -84,7 +87,6 @@ Content.propTypes = {
     formGridTo: PropTypes.string.isRequired,
     inputText: PropTypes.number.isRequired,
     pending: PropTypes.bool.isRequired,
-    dataFromAPI: PropTypes.array.isRequired,
   }),
   setToCur: PropTypes.func.isRequired,
   getTextInput: PropTypes.func.isRequired,

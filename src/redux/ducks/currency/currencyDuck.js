@@ -10,6 +10,8 @@ export const SET_TO_CURRENCY = 'my-app/gettingSum/SET_TO_CURRENCY';
 
 export const GET_FILTERED_ITEMS = 'my-app/gettingList/GET_FILTERED_ITEMS';
 
+
+
 /* Actions */
 
 export const getTextInput = value => {
@@ -37,11 +39,11 @@ export const setToCur = (value, id) => {
   };
 }
 
-export const filterList = (index, item) => {
+export const filterList = (item,index) => {
   return {
     type: GET_FILTERED_ITEMS,
-    index,
     item,
+    index
   };
 }
 
@@ -93,16 +95,30 @@ export const sumFunc = arg => {
   return sum;
 }
 
-const filter = (index, data) => {
-  let state = data;
- state.dataFromAPI.splice(index, 1);
-  return state.dataFromAPI;
+const filter = (data) => {
+const map = [];
+ for (let key in data) {
+    map.push( { key: key, value: data[key], star: false })
+ }
+ map.push( {key: 'EUR', value: 1, star: false});
+ return map;
 }
 
-function favorite(item, array) {
-let favoriteItem = [...array,item];
-  return favoriteItem;
+function favorite(item,index,data) {
+  const newState = {
+    ...data
+  };
+
+  newState.dataFromAPI.splice(index,1);
+  if (!item.star) {
+   newState.dataFromAPI.unshift({ ...item, star: true});
+  }else{
+    newState.dataFromAPI.push({ ...item, star: false});
+  }
+  return newState.dataFromAPI
 }
+
+
 const gettingData = (state = initialStateGetData, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
@@ -113,10 +129,7 @@ const gettingData = (state = initialStateGetData, action) => {
     case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        dataFromAPI: [
-          ...Object.entries(action.data.rates),
-          [action.data.base, 1],
-        ],
+        dataFromAPI: filter(action.data.rates),
         formGridFrome: action.data.base,
         date: action.data.date,
         formGridTo: Object.keys(action.data.rates)[0],
@@ -140,8 +153,7 @@ const gettingData = (state = initialStateGetData, action) => {
     case GET_FILTERED_ITEMS:
       return {
         ...state,
-        dataFromAPI: filter(action.index, state),
-        filtered: favorite(action.item, state.filtered)
+        dataFromAPI: favorite(action.item, action.index,state)
       };
     default:
       return state;
@@ -160,12 +172,6 @@ const gettingData = (state = initialStateGetData, action) => {
       return state;
   }
 }
-
-export default  {
-  gettingData,
-  getSum
-};
-
 
 
 
@@ -201,4 +207,10 @@ export function* watchLoadData() {
 
 export function* rootSaga() {
   yield watchLoadData();
+};
+
+
+export default  {
+  gettingData,
+  getSum
 };
