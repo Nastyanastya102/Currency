@@ -1,16 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Table from 'react-bootstrap/Table';
 import { Star } from './Icon';
   
-export const TableList = ({ gettingData, filterList }) => {
-  const list = gettingData.dataFromAPI.map((key, index) => (
+const TableList = ({ dataFromAPI, filterList }) => {
+
+  const list = dataFromAPI.map((key, index) => (
     <tr key={key.key}>
       <td>{index + 1}</td>
         <td>{key.key}</td>
         <td>{key.value}</td>
         <td>
-          <i onClick={() => setTimeout(() => filterList(key, index),0)}>
+          <i onClick={() => setTimeout(() => filterList(key, index), 0)}>
               <Star color={key.star}/>
           </i>
         </td>
@@ -33,3 +35,9 @@ export const TableList = ({ gettingData, filterList }) => {
   );
 };
 
+export default TableList;
+
+TableList.propTypes = {
+  filterList: PropTypes.func.isRequired,
+  dataFromAPI: PropTypes.array.isRequired,
+};

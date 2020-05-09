@@ -4,9 +4,10 @@ export const FETCH_PRODUCTS_PENDING = 'my-app/gettingData/FETCH_PRODUCTS_PENDING
 export const FETCH_PRODUCTS_SUCCESS = 'my-app/gettingData/FETCH_PRODUCTS_SUCCESS';
 export const FETCH_PRODUCTS_ERROR = 'my-app/gettingData/FETCH_PRODUCTS_ERROR';
 
+export const GET_TEXT_INPUT = 'my-app/getInputData/GET_TEXT_INPUT';
+export const SET_TO_CURRENCY = 'my-app/getInputData/SET_TO_CURRENCY';
+
 export const GET_SUM = 'my-app/gettingValue/GET_SUM';
-export const GET_TEXT_INPUT = 'my-app/gettingValue/GET_TEXT_INPUT';
-export const SET_TO_CURRENCY = 'my-app/gettingSum/SET_TO_CURRENCY';
 
 export const GET_FILTERED_ITEMS = 'my-app/gettingList/GET_FILTERED_ITEMS';
 
@@ -56,13 +57,10 @@ export const fetchProductsPending = () => {
   };
 };
 
-export const fetchProductsSuccess = (dataFromAPI, formGridFrome, date, formGridTo) => {
+export const fetchProductsSuccess = data => {
   return {
     type: FETCH_PRODUCTS_SUCCESS,
-    dataFromAPI,
-    formGridFrome,
-    formGridTo,
-    date,
+    data,
   };
 };
 
@@ -75,7 +73,7 @@ export const fetchProductsError = () => {
 
 /* Reducers */
 
-const initialStateGetData = {
+const initialState = {
   pending: false,
   error: false,
   dataFromAPI: [],
@@ -83,26 +81,24 @@ const initialStateGetData = {
   formGridTo: '',
   date: '',
   inputText: 0,
-  filtered: [],
 };
 
-export const sumFunc = arg => {
+export const getSumByValue = arg => {
   let sum;
   arg.currency === 'EUR'
     ? (sum = +(arg.value1 * arg.value2 * arg.value3).toFixed(2))
-    : (sum = +(((100 * arg.value3) / (100 * arg.value2)) * arg.value1).toFixed(
-        2
-      ));
-  return sum;
+    : (sum = +(((100 * arg.value3) / (100 * arg.value2)) * arg.value1).toFixed(2));
+  return sum || 0;
 };
 
-const filter = (data) => {
-const map = [];
+const makeObj = (data) => {
+const result = [];
  for (const key in data) {
-    map.push({ key: key, value: data[key], star: false });
+  result.push({ key: key, value: data[key], star: false });
  }
- map.push({ key: 'EUR', value: 1, star: false });
- return map;
+  result.push({ key: 'EUR', value: 1, star: false });
+
+ return result;
 };
 
 const favorite = (item, index, data) => {
@@ -120,7 +116,8 @@ const favorite = (item, index, data) => {
 };
 
 
-const gettingData = (state = initialStateGetData, action) => {
+
+const gettingData = (state = [], action) => {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
       return {
@@ -130,7 +127,7 @@ const gettingData = (state = initialStateGetData, action) => {
     case FETCH_PRODUCTS_SUCCESS:
       return {
         ...state,
-        dataFromAPI: filter(action.data.rates),
+        dataFromAPI: makeObj(action.data.rates),
         formGridFrome: action.data.base,
         date: action.data.date,
         formGridTo: Object.keys(action.data.rates)[0],
@@ -141,6 +138,13 @@ const gettingData = (state = initialStateGetData, action) => {
         ...state,
         error: true,
       };
+      default:
+      return state;
+  }
+};
+
+const getInputData = (state = [], action) => {
+  switch (action.type) {
     case GET_TEXT_INPUT:
       return {
         ...state,
@@ -151,6 +155,23 @@ const gettingData = (state = initialStateGetData, action) => {
         ...state,
         [action.id]: action.value,
       };
+    default:
+      break;
+  }
+};
+
+const currencyApp = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_PRODUCTS_PENDING:
+      return gettingData(state, action);
+    case FETCH_PRODUCTS_SUCCESS:
+      return gettingData(state, action);
+    case FETCH_PRODUCTS_ERROR:
+      return gettingData(state, action);
+    case GET_TEXT_INPUT:
+      return getInputData(state, action);
+    case SET_TO_CURRENCY:
+      return getInputData(state, action);
     case GET_FILTERED_ITEMS:
       return {
         ...state,
@@ -161,13 +182,12 @@ const gettingData = (state = initialStateGetData, action) => {
   }
 };
 
-
  const getSum = (state = { sum: 0 }, action) => {
   switch (action.type) {
     case GET_SUM:
       return {
         ...state,
-        sum: sumFunc(action),
+        sum: getSumByValue(action),
       };
     default:
       return state;
@@ -211,7 +231,7 @@ export function* rootSaga() {
 
 
 export default {
-  gettingData,
+  currencyApp,
   getSum
 };
 

@@ -7,7 +7,7 @@ import { Input } from './Input';
 
 import { Form } from 'react-bootstrap';
 
-const Content = ({ gettingData, getTextInput, setToCur, getSumValue}) => {
+const Content = ({ currencyApp, getTextInput, setToCur, getSumValue}) => {
 
  const handleChangeInput = (event) => {
     if (!isNaN(event.target.value)) {
@@ -17,25 +17,25 @@ const Content = ({ gettingData, getTextInput, setToCur, getSumValue}) => {
 
   const handleChange = (event) => {
     setToCur(event.target.selectedOptions[0].text, event.target.id);
-    getSumValue(0, 0, 0);
+    getSumValue(0, 0, 0, event.target.selectedOptions[0].text);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-     const from = gettingData.dataFromAPI.findIndex((currentValue) => currentValue.key === gettingData.formGridFrome);
-     const to = gettingData.dataFromAPI.findIndex((currentValue) => currentValue.key === gettingData.formGridTo);
+     const from = currencyApp.dataFromAPI.findIndex((currentValue) => currentValue.key === currencyApp.formGridFrome);
+     const to = currencyApp.dataFromAPI.findIndex((currentValue) => currentValue.key === currencyApp.formGridTo);
      
     getSumValue(
-      gettingData.inputText,
-      gettingData.dataFromAPI[from].value,
-      gettingData.dataFromAPI[to].value,
-      gettingData.formGridFrome
+      currencyApp.inputText,
+      currencyApp.dataFromAPI[from].value,
+      currencyApp.dataFromAPI[to].value,
+      currencyApp.formGridFrome
       );
     getTextInput('');
   };
 
-  if (gettingData.pending) return <p>Loading...</p>;
-   const list = gettingData.dataFromAPI.map((item, index) => (
+  if (currencyApp.pending) return <p>Loading...</p>;
+   const list = currencyApp.dataFromAPI.map((item, index) => (
     <option key={index} value={item.key}>
       {item.key}
     </option>
@@ -49,7 +49,7 @@ const Content = ({ gettingData, getTextInput, setToCur, getSumValue}) => {
             text="Amount"
             as="input"
             placeholder="Enter value"
-            value={gettingData.inputText}
+            value={currencyApp.inputText}
             event={(event) => handleChangeInput(event)}
           />
 
@@ -57,7 +57,7 @@ const Content = ({ gettingData, getTextInput, setToCur, getSumValue}) => {
             controlId="formGridFrome"
             text="Base"
             as="select"
-            value={gettingData.formGridFrome}
+            value={currencyApp.formGridFrome}
             name="from"
             list={list}
             event={(event) => handleChange(event)}
@@ -67,7 +67,7 @@ const Content = ({ gettingData, getTextInput, setToCur, getSumValue}) => {
             controlId="formGridTo"
             text="To"
             as="select"
-            value={gettingData.formGridTo}
+            value={currencyApp.formGridTo}
             name="to"
             list={list}
             event={(event) => handleChange(event)}
@@ -84,7 +84,7 @@ Content.propTypes = {
   getSumValue: PropTypes.func.isRequired,
   getTextInput: PropTypes.func.isRequired,
   setToCur: PropTypes.func.isRequired,
-  gettingData: PropTypes.shape({
+  currencyApp: PropTypes.shape({
     date: PropTypes.string.isRequired,
     error: PropTypes.bool.isRequired,
     formGridFrome: PropTypes.string.isRequired,

@@ -3,17 +3,20 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import expect from 'expect';
 
-import Content from '../../../../src/views/components/MainContent/MainContent';
+import Content from '../../../../views/components/MainContent/MainContent';
 
 const props = {
-  gettingData: {
-    pending: false,
+  currencyApp: {
+    dataFromAPI: [
+      { key: 'CAD', value: 1.5118, star: false }, 
+      { key: 'HKD', value: 8.4052, star: false }
+    ],
+    date: "2020-05-08",
     error: false,
-    dataFromAPI: [],
-    formGridFrome: '',
-    formGridTo: '',
+    formGridFrome: "EUR",
+    formGridTo: "CAD",
     inputText: 0,
-    date: '',
+    pending: false,
   },
   getTextInput: jest.fn(),
   setToCur: jest.fn(),
@@ -34,8 +37,8 @@ describe('Should render MainContent', () => {
   it('Should return Loading text', () => {
     const nextProps = {
       ...props,
-      gettingData: {
-        ...props.gettingData,
+      currencyApp: {
+        ...props.currencyApp,
         pending: true,
       },
     };
@@ -48,9 +51,4 @@ describe('Should render MainContent', () => {
     expect(wrapper.find('Connect(Sum)')).toHaveLength(1);
   });
 
-  it('Should simulate onSubmit', () => {
-    wrapper.find('Form').simulate('submit', {
-      preventDefault: () => {},
-    });
-  });
 });

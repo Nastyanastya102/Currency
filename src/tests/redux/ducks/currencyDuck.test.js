@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 
-import * as types from '../../../src/redux/ducks/currency/currencyDuck';
+import * as types from '../../../redux/ducks/currency/currencyDuck';
 
 describe('should return right value from all action creators', () => {
   const sum = (typ) => {
@@ -29,17 +29,11 @@ describe('should return right value from all action creators', () => {
   it('should create an action for get a data', () => {
     const data = {
       type: types.FETCH_PRODUCTS_SUCCESS,
-      dataFromAPI: { rates: { CAD: 1.5077, HKD: 8.43, ISK: 159.3 } },
-      formGridFrome: 'EUR',
-      date: '2020-04-30',
-      formGridTo: 'CAD',
+      data: { rates: { CAD: 1.5077, HKD: 8.43 }, base: 'EUR', date: '2020-04-30' },
     };
     expect(
       types.fetchProductsSuccess(
-        { rates: { CAD: 1.5077, HKD: 8.43, ISK: 159.3 } },
-        'EUR',
-        '2020-04-30',
-        'CAD'
+        { rates: { CAD: 1.5077, HKD: 8.43 }, base: 'EUR', date: '2020-04-30' },
       )
     ).toEqual(data);
   });
@@ -64,26 +58,21 @@ describe('should return the new state', () => {
     formGridTo: '',
     date: '',
     inputText: 0,
-    filtered: [],
   };
   const successState = {
     ...state,
-    dataFromAPI: [
-      ['AUD', 1.6598],
-      ['BGN', 1.9558],
-      ['EUR', 1],
-    ],
-    date: '2020-04-30',
+    dataFromAPI: [{ key: 'CAD', value: 1.5118, star: false }, { key: 'HKD', value: 8.4052, star: false }, { key: 'EUR', value: 1, star: false }],
+    date: '2020-05-08',
     formGridFrome: 'EUR',
-    formGridTo: 'AUD',
+    formGridTo: 'CAD',
   };
   it('should return the initial state', () => {
-    expect(types.gettingData(undefined, {})).toEqual(state);
+    expect(types.default.currencyApp(undefined, {})).toEqual(state);
   });
 
   it('should handle FETCH_PRODUCTS_PENDING', () => {
     expect(
-      types.gettingData(state, {
+      types.default.currencyApp(state, {
         type: types.FETCH_PRODUCTS_PENDING,
       })
     ).toEqual({ ...state, pending: true });
@@ -91,20 +80,20 @@ describe('should return the new state', () => {
 
   it('should handle FETCH_PRODUCTS_SUCCESS', () => {
     expect(
-      types.gettingData(state, {
+      types.default.currencyApp(state, {
         type: types.FETCH_PRODUCTS_SUCCESS,
         data: {
-          rates: { AUD: 1.6598, BGN: 1.9558 },
-          base: 'EUR',
-          date: '2020-04-30',
-        },
-      })
+        base: "EUR",
+        date: "2020-05-08",
+        rates: {CAD: 1.5118, HKD: 8.4052}
+      },
+    })
     ).toEqual(successState);
   });
 
   it('should handle FETCH_PRODUCTS_ERROR', () => {
     expect(
-      types.gettingData(state, {
+      types.default.currencyApp(state, {
         type: types.FETCH_PRODUCTS_ERROR,
       })
     ).toEqual({ ...state, error: true });
@@ -112,7 +101,7 @@ describe('should return the new state', () => {
 
   it('sould return GET_TEXT_INPUT', () => {
     expect(
-      types.gettingData(state, {
+      types.default.currencyApp(state, {
         type: types.GET_TEXT_INPUT,
         value: '100',
       })
@@ -121,23 +110,23 @@ describe('should return the new state', () => {
 
   it('sould return SET_TO_CURRENCY', () => {
     expect(
-      types.gettingData(state, {
+      types.default.currencyApp(state, {
         type: types.SET_TO_CURRENCY,
-        value: 'CAD',
+        value: 'HKD',
         id: 'formGridFrome',
       })
-    ).toEqual({ ...state, formGridFrome: 'CAD' });
+    ).toEqual({ ...state, formGridFrome: 'HKD' });
   });
 });
 
 describe('should return right sum', () => {
   it('should return the initial state', () => {
-    expect(types.getSum(undefined, {})).toEqual({ sum: 0 });
+    expect(types.default.getSum(undefined, {})).toEqual({ sum: 0 });
   });
 
   it('should return GET_SUM for EUR', () => {
     expect(
-      types.getSum(
+      types.default.getSum(
         { sum: 0 },
         {
           type: types.GET_SUM,

@@ -6,8 +6,8 @@ import { getTextInput, getSumValue, setToCur, fetchProductsPending } from '../..
 
 import mainContent from '../components/MainContent/MainContent';
 
-const mapStateToProps = ({ gettingData, getSum }) => ({
-  gettingData,
+const mapStateToProps = ({ currencyApp, getSum }) => ({
+  currencyApp,
   sum: getSum,
 });
 
