@@ -1,15 +1,22 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 
+import { 
+getSumByValue,
+updateState,
+favorite,
+gettingData
+} from '../../helpers';
+
 export const FETCH_PRODUCTS_PENDING = 'my-app/gettingData/FETCH_PRODUCTS_PENDING';
 export const FETCH_PRODUCTS_SUCCESS = 'my-app/gettingData/FETCH_PRODUCTS_SUCCESS';
 export const FETCH_PRODUCTS_ERROR = 'my-app/gettingData/FETCH_PRODUCTS_ERROR';
 
-export const GET_TEXT_INPUT = 'my-app/getInputData/GET_TEXT_INPUT';
-export const SET_TO_CURRENCY = 'my-app/getInputData/SET_TO_CURRENCY';
+export const GET_TEXT_INPUT = 'my-app/gettingData/GET_TEXT_INPUT';
+export const SET_TO_CURRENCY = 'my-app/gettingData/SET_TO_CURRENCY';
 
-export const GET_SUM = 'my-app/gettingValue/GET_SUM';
+export const GET_SUM = 'my-app/getSum/GET_SUM';
 
-export const GET_FILTERED_ITEMS = 'my-app/gettingList/GET_FILTERED_ITEMS';
+export const GET_FILTERED_ITEMS = 'my-app/gettingData/GET_FILTERED_ITEMS';
 
 const GET_CURRENCY_RATE = 'https://api.exchangeratesapi.io/latest';
 
@@ -83,100 +90,22 @@ const initialState = {
   inputText: 0,
 };
 
-export const getSumByValue = arg => {
-  let sum;
-  arg.currency === 'EUR'
-    ? (sum = +(arg.value1 * arg.value2 * arg.value3).toFixed(2))
-    : (sum = +(((100 * arg.value3) / (100 * arg.value2)) * arg.value1).toFixed(2));
-  return sum || 0;
-};
 
-const makeObj = (data) => {
-const result = [];
- for (const key in data) {
-  result.push({ key: key, value: data[key], star: false });
- }
-  result.push({ key: 'EUR', value: 1, star: false });
-
- return result;
-};
-
-const favorite = (item, index, data) => {
-  const newState = {
-    ...data
-  };
-
-  newState.dataFromAPI.splice(index, 1);
-  if (item.star) {
-    newState.dataFromAPI.push({ ...item, star: false });
-  } else {
-   newState.dataFromAPI.unshift({ ...item, star: true });
-  }
-  return newState.dataFromAPI;
-};
-
-
-
-const gettingData = (state = [], action) => {
-  switch (action.type) {
-    case FETCH_PRODUCTS_PENDING:
-      return {
-        ...state,
-        pending: true,
-      };
-    case FETCH_PRODUCTS_SUCCESS:
-      return {
-        ...state,
-        dataFromAPI: makeObj(action.data.rates),
-        formGridFrome: action.data.base,
-        date: action.data.date,
-        formGridTo: Object.keys(action.data.rates)[0],
-        pending: false,
-      };
-    case FETCH_PRODUCTS_ERROR:
-      return {
-        ...state,
-        error: true,
-      };
-      default:
-      return state;
-  }
-};
-
-const getInputData = (state = [], action) => {
-  switch (action.type) {
-    case GET_TEXT_INPUT:
-      return {
-        ...state,
-        inputText: +action.value,
-      };
-    case SET_TO_CURRENCY:
-      return {
-        ...state,
-        [action.id]: action.value,
-      };
-    default:
-      break;
-  }
-};
 
 const currencyApp = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
-      return gettingData(state, action);
+      return updateState(state, { pending: true });
     case FETCH_PRODUCTS_SUCCESS:
       return gettingData(state, action);
     case FETCH_PRODUCTS_ERROR:
-      return gettingData(state, action);
+      return updateState(state, { error: true });
     case GET_TEXT_INPUT:
-      return getInputData(state, action);
+      return updateState(state, { inputText: +action.value });
     case SET_TO_CURRENCY:
-      return getInputData(state, action);
+      return updateState(state, { [action.id]: action.value });
     case GET_FILTERED_ITEMS:
-      return {
-        ...state,
-        dataFromAPI: favorite(action.item, action.index, state),
-      };
+      return favorite(action.item, action.index, state);
     default:
       return state;
   }
@@ -185,10 +114,7 @@ const currencyApp = (state = initialState, action) => {
  const getSum = (state = { sum: 0 }, action) => {
   switch (action.type) {
     case GET_SUM:
-      return {
-        ...state,
-        sum: getSumByValue(action),
-      };
+      return getSumByValue(state, action);
     default:
       return state;
   }
@@ -201,8 +127,7 @@ const currencyApp = (state = initialState, action) => {
 export const fetchData = async () => {
   try {
     const response = await fetch(GET_CURRENCY_RATE);
-    const user = await response.json();
-    return user;
+    return await response.json();
   } catch (e) {
     console.log(e);
   }

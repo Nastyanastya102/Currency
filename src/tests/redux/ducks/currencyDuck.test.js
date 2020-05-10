@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 
-import * as types from '../../../redux/ducks/currency/currencyDuck';
+import * as types from '../../../redux/ducks/currencyDuck';
 
 describe('should return right value from all action creators', () => {
   const sum = (typ) => {
@@ -43,11 +43,8 @@ describe('should return right value from all action creators', () => {
       type: types.FETCH_PRODUCTS_ERROR,
     });
   });
+
 });
-
-
-
-
 
 describe('should return the new state', () => {
   const state = {
@@ -139,9 +136,6 @@ describe('should return right sum', () => {
     ).toEqual({ sum: 3000 });
   });
 });
-
-
-
 
 describe('All sagas', () => {
   beforeEach(() => {

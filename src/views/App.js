@@ -11,16 +11,7 @@ import {
   TableList
 } from './components';
 
-import { Container } from 'react-bootstrap';
-import styled from 'styled-components';
-
-const StyledContainer = styled.section `
-    background-color: #71717126;  
-    min-height: 100vh; 
-`;
-const StyledSection = styled(Container) `
-    margin-bottom: 100px;
-`;
+import { StyledContainer, StyledSection } from './styles/App';
 
 
 export const App = ({ fetchProductsPending }) => {

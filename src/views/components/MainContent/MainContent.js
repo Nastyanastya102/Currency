@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Form } from 'react-bootstrap';
 
 import Sum from '../../containers/SumStore';
 import { Input } from './Input';
 
-import { Form } from 'react-bootstrap';
 
 const Content = ({ currencyApp, getTextInput, setToCur, getSumValue}) => {
 
- const handleChangeInput = (event) => {
+  const handleChangeInput = (event) => {
     if (!isNaN(event.target.value)) {
       getTextInput(event.target.value);
     }
@@ -22,61 +22,58 @@ const Content = ({ currencyApp, getTextInput, setToCur, getSumValue}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-     const from = currencyApp.dataFromAPI.findIndex((currentValue) => currentValue.key === currencyApp.formGridFrome);
-     const to = currencyApp.dataFromAPI.findIndex((currentValue) => currentValue.key === currencyApp.formGridTo);
+    const from = currencyApp.dataFromAPI.findIndex((currentValue) => currentValue.key === currencyApp.formGridFrome);
+    const to = currencyApp.dataFromAPI.findIndex((currentValue) => currentValue.key === currencyApp.formGridTo);
      
     getSumValue(
-      currencyApp.inputText,
-      currencyApp.dataFromAPI[from].value,
-      currencyApp.dataFromAPI[to].value,
-      currencyApp.formGridFrome
-      );
+    currencyApp.inputText,
+    currencyApp.dataFromAPI[from].value,
+    currencyApp.dataFromAPI[to].value,
+    currencyApp.formGridFrome
+    );
     getTextInput('');
   };
 
   if (currencyApp.pending) return <p>Loading...</p>;
-   const list = currencyApp.dataFromAPI.map((item, index) => (
+  const list = currencyApp.dataFromAPI.map((item, index) => (
     <option key={index} value={item.key}>
       {item.key}
     </option>
   ));
-
-    return (
-      <Form onSubmit={(e) => handleSubmit(e)}>
-        <Form.Row>
-          <Input
-            controlId="formGridInput"
-            text="Amount"
-            as="input"
-            placeholder="Enter value"
-            value={currencyApp.inputText}
-            event={(event) => handleChangeInput(event)}
-          />
-
-          <Input
-            controlId="formGridFrome"
-            text="Base"
-            as="select"
-            value={currencyApp.formGridFrome}
-            name="from"
-            list={list}
-            event={(event) => handleChange(event)}
-          />
-
-          <Input
-            controlId="formGridTo"
-            text="To"
-            as="select"
-            value={currencyApp.formGridTo}
-            name="to"
-            list={list}
-            event={(event) => handleChange(event)}
-          />
-        </Form.Row>
-        <Sum /> 
-      </Form>
-    );
-  };
+  return (
+    <Form onSubmit={(e) => handleSubmit(e)}>
+      <Form.Row>
+        <Input
+          controlId="formGridInput"
+          text="Amount"
+          as="input"
+          placeholder="Enter value"
+          value={currencyApp.inputText}
+          event={(event) => handleChangeInput(event)}
+        />
+        <Input
+          controlId="formGridFrome"
+          text="Base"
+          as="select"
+          value={currencyApp.formGridFrome}
+          name="from"
+          list={list}
+          event={(event) => handleChange(event)}
+        />
+        <Input
+          controlId="formGridTo"
+          text="To"
+          as="select"
+          value={currencyApp.formGridTo}
+          name="to"
+          list={list}
+          event={(event) => handleChange(event)}
+        />
+      </Form.Row>
+      <Sum /> 
+    </Form>
+  );
+};
 
 export default Content;
 

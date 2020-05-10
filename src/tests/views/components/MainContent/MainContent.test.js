@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import expect from 'expect';
 
-import Content from '../../../../views/components/MainContent/MainContent';
+import { MainContent } from '../../../../views/components/';
 
 const props = {
   currencyApp: {
@@ -26,11 +26,11 @@ const props = {
 describe('Should render MainContent', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<Content {...props} />);
+    wrapper = shallow(<MainContent {...props} />);
   });
 
   it('renders correctly', () => {
-    wrapper = shallow(<Content {...props} />);
+    wrapper = shallow(<MainContent {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
@@ -42,7 +42,7 @@ describe('Should render MainContent', () => {
         pending: true,
       },
     };
-    wrapper = shallow(<Content {...nextProps} />);
+    wrapper = shallow(<MainContent {...nextProps} />);
     expect(wrapper.find('p').text()).toEqual('Loading...');
   });
 

@@ -4,22 +4,7 @@ import PropTypes from 'prop-types';
 import Table from 'react-bootstrap/Table';
 import { Star } from './Icon';
   
-const TableList = ({ dataFromAPI, filterList }) => {
-
-  const list = dataFromAPI.map((key, index) => (
-    <tr key={key.key}>
-      <td>{index + 1}</td>
-        <td>{key.key}</td>
-        <td>{key.value}</td>
-        <td>
-          <i onClick={() => setTimeout(() => filterList(key, index), 0)}>
-              <Star color={key.star}/>
-          </i>
-        </td>
-    </tr>
-  ));
-
-  return (
+const TableList = ({ dataFromAPI, filterList }) => (
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -29,11 +14,23 @@ const TableList = ({ dataFromAPI, filterList }) => {
         </tr>
       </thead>
       <tbody>
-        {list}
+        {
+          dataFromAPI.map((key, index) => (
+            <tr key={key.key}>
+              <td>{index + 1}</td>
+                <td>{key.key}</td>
+                <td>{key.value}</td>
+                <td>
+                  <i onClick={() => filterList(key, index)}>
+                    <Star color={key.star}/>
+                  </i>
+                </td>
+            </tr>
+          ))
+        }
       </tbody>
     </Table>
   );
-};
 
 export default TableList;
 

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import expect from 'expect';
 
-import TableList from '../../../../views/components/TableList/TableList';
+import { Table } from '../../../../views/components';
 
 const props = {
   dataFromAPI: [
@@ -22,12 +22,11 @@ const props = {
 describe('Should render MainContent', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(<TableList {...props} />);
+    wrapper = shallow(<Table {...props} />);
   });
-console.log(wrapper);
-
+  
   it('renders correctly', () => {
-    wrapper = shallow(<TableList {...props} />);
+    wrapper = shallow(<Table {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 

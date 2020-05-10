@@ -2,9 +2,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getTextInput, getSumValue, setToCur, fetchProductsPending } from '../../redux/ducks/currency/currencyDuck';
-
 import mainContent from '../components/MainContent/MainContent';
+
+import { getTextInput, getSumValue, setToCur, fetchProductsPending } from '../../redux/ducks/currencyDuck';
 
 const mapStateToProps = ({ currencyApp, getSum }) => ({
   currencyApp,
