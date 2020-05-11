@@ -1,13 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'react-bootstrap';
+import {Form} from 'react-bootstrap';
 
 import Sum from '../../containers/SumStore';
-import { Input } from './Input';
+import {Input} from './Input';
 
-
-const Content = ({ currencyApp, getTextInput, setToCur, getSumValue}) => {
+const Content = ({currencyApp, getTextInput, setToCur, getSumValue}) => {
 
   const handleChangeInput = (event) => {
     if (!isNaN(event.target.value)) {

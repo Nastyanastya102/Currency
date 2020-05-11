@@ -1,6 +1,6 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {Nav, Navbar} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 import {
   StyledLinkContainer,
@@ -13,7 +13,7 @@ export const NavBar = () => (
   <StyledSection expand="lg" variant="light" sticky="top">
     <Nav.Link as={Link} to="/">
       <Navbar.Brand>
-        <img src={Logo} alt="logo" width="50" height="50" />{" "}
+        <img src={Logo} alt="logo" width="50" height="50" />
       </Navbar.Brand>
     </Nav.Link>
     <StyledLinkContainer className="ml-auto">
@@ -25,4 +25,4 @@ export const NavBar = () => (
       </StyledButton>
     </StyledLinkContainer>
   </StyledSection>
-  );
+);

@@ -1,14 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Col } from 'react-bootstrap';
+import {Form, Col} from 'react-bootstrap';
 
-import { StyleForFormHead } from '../../styles/MainContentStyle';
+import {StyleForFormHead} from '../../styles/MainContentStyle';
 
-export const Input = ({ as, controlId, text, value, placeholder, name, event, list }) => (
+export const Input = ({as, controlId, text, value, placeholder, name, event, list}) => (
   <Form.Group as={Col} controlId={controlId}>
     <StyleForFormHead>
-      {text === 'Base' ? `${ text } = ${ value }` : text}
+      {
+        text === 'Base' 
+        ? `${ text } = ${ value }` 
+        : text
+      }
     </StyleForFormHead>
     <Form.Control
       as={as}
@@ -17,7 +21,11 @@ export const Input = ({ as, controlId, text, value, placeholder, name, event, li
       value={value}
       onChange={event}
     >
-      {as === 'input' ? null : list}
+      {
+        as === 'input' 
+        ? null 
+        : list
+      }
     </Form.Control>
   </Form.Group>
 );

@@ -1,15 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import expect from 'expect';
 
-import { MainContent } from '../../../../views/components/';
+import {MainContent} from '../../../../views/components/';
 
 const props = {
   currencyApp: {
     dataFromAPI: [
-      { key: 'CAD', value: 1.5118, star: false }, 
-      { key: 'HKD', value: 8.4052, star: false }
+      {key: 'CAD', value: 1.5118, star: false}, 
+      {key: 'HKD', value: 8.4052, star: false}
     ],
     date: "2020-05-08",
     error: false,
@@ -22,7 +22,8 @@ const props = {
   setToCur: jest.fn(),
   getSumValue: jest.fn(),
   fetchProductsPending: jest.fn(),
-};
+ };
+ 
 describe('Should render MainContent', () => {
   let wrapper;
   beforeEach(() => {
@@ -45,10 +46,9 @@ describe('Should render MainContent', () => {
     wrapper = shallow(<MainContent {...nextProps} />);
     expect(wrapper.find('p').text()).toEqual('Loading...');
   });
-
+ 
   it('Should return 3 Inputs and Sum component', () => {
     expect(wrapper.find('Input')).toHaveLength(3);
     expect(wrapper.find('Connect(Sum)')).toHaveLength(1);
   });
-
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ArbitraryComponent, StyleContent, Header } from '../styles/JumboStyle';
+import {ArbitraryComponent, StyleContent, Header} from '../styles/JumboStyle';
 
 export const Jumbo = () => (
   <ArbitraryComponent fluid>
@@ -13,5 +13,5 @@ export const Jumbo = () => (
       </p>
     </StyleContent>
   </ArbitraryComponent>
-  );
+);
 

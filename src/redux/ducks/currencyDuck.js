@@ -1,11 +1,13 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
+import {takeEvery, put, call} from 'redux-saga/effects';
 
-import { 
-getSumByValue,
-updateState,
-favorite,
-gettingData
+import {
+  getSumByValue,
+  updateState,
+  favorite,
+  gettingData
 } from '../../helpers';
+
+const GET_CURRENCY_RATE = 'https://api.exchangeratesapi.io/latest';
 
 export const FETCH_PRODUCTS_PENDING = 'my-app/gettingData/FETCH_PRODUCTS_PENDING';
 export const FETCH_PRODUCTS_SUCCESS = 'my-app/gettingData/FETCH_PRODUCTS_SUCCESS';
@@ -13,16 +15,11 @@ export const FETCH_PRODUCTS_ERROR = 'my-app/gettingData/FETCH_PRODUCTS_ERROR';
 
 export const GET_TEXT_INPUT = 'my-app/gettingData/GET_TEXT_INPUT';
 export const SET_TO_CURRENCY = 'my-app/gettingData/SET_TO_CURRENCY';
+export const GET_FILTERED_ITEMS = 'my-app/gettingData/GET_FILTERED_ITEMS';
 
 export const GET_SUM = 'my-app/getSum/GET_SUM';
 
-export const GET_FILTERED_ITEMS = 'my-app/gettingData/GET_FILTERED_ITEMS';
-
-const GET_CURRENCY_RATE = 'https://api.exchangeratesapi.io/latest';
-
-
 /* Actions */
-
 export const getTextInput = value => {
   return {
     type: GET_TEXT_INPUT,
@@ -79,7 +76,6 @@ export const fetchProductsError = () => {
 
 
 /* Reducers */
-
 const initialState = {
   pending: false,
   error: false,
@@ -90,20 +86,18 @@ const initialState = {
   inputText: 0,
 };
 
-
-
 const currencyApp = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
-      return updateState(state, { pending: true });
+      return updateState(state, {pending: true});
     case FETCH_PRODUCTS_SUCCESS:
       return gettingData(state, action);
     case FETCH_PRODUCTS_ERROR:
-      return updateState(state, { error: true });
+      return updateState(state, {error: true});
     case GET_TEXT_INPUT:
-      return updateState(state, { inputText: +action.value });
+      return updateState(state, {inputText: +action.value});
     case SET_TO_CURRENCY:
-      return updateState(state, { [action.id]: action.value });
+      return updateState(state, {[action.id]: action.value});
     case GET_FILTERED_ITEMS:
       return favorite(action.item, action.index, state);
     default:
@@ -111,7 +105,7 @@ const currencyApp = (state = initialState, action) => {
   }
 };
 
- const getSum = (state = { sum: 0 }, action) => {
+ const getSum = (state = {sum: 0}, action) => {
   switch (action.type) {
     case GET_SUM:
       return getSumByValue(state, action);
@@ -120,10 +114,7 @@ const currencyApp = (state = initialState, action) => {
   }
 };
 
-
-
 /* Saga */
-
 export const fetchData = async () => {
   try {
     const response = await fetch(GET_CURRENCY_RATE);
@@ -141,7 +132,7 @@ export function* watchWork() {
       data,
     });
   } catch (error) {
-    yield put({ type: FETCH_PRODUCTS_ERROR });
+    yield put({type: FETCH_PRODUCTS_ERROR});
     console.log(error);
   }
 }
@@ -153,7 +144,6 @@ export function* watchLoadData() {
 export function* rootSaga() {
   yield watchLoadData();
 }
-
 
 export default {
   currencyApp,

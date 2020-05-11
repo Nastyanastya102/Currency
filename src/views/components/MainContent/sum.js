@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 
-import { Total } from '../../styles/MainContentStyle';
+import {Total} from '../../styles/MainContentStyle';
 
-export const Sum = ({ sum, formGridTo }) => (
+export const Sum = ({sum, formGridTo}) => (
   <Row className="text-center">
     <Col xl={12}>
       {
@@ -18,7 +18,7 @@ export const Sum = ({ sum, formGridTo }) => (
 );
 
 Sum.propTypes = {
-    sum: PropTypes.number,
-    to: PropTypes.string,
+  sum: PropTypes.number,
+  to: PropTypes.string,
 };
 
