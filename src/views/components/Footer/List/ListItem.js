@@ -4,15 +4,15 @@ import {ListGroup} from 'react-bootstrap';
 
 import {Footer, FooterTitle} from '../../../styles/FooterStyle';
 
-export const ListItem = props => (
+export const ListItem = ({data, title}) => (
   <ListGroup as="ul">
     <Footer>
-      <FooterTitle>{props.title}</FooterTitle>
+      <FooterTitle>{title}</FooterTitle>
       <ListGroup as="ul">
       {
-        props.data[0].map((i, index) => (
+        data[0].map((i, index) => (
           <ListGroup.Item action href={i} key={index}>
-            {props.data[1][index]}
+            {data[1][index]}
           </ListGroup.Item>
         ))
       }
@@ -22,6 +22,6 @@ export const ListItem = props => (
 );
 
 ListItem.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.array).isRequired,
   title: PropTypes.string.isRequired,
 };

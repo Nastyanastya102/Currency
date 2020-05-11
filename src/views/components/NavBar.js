@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Nav, Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
@@ -26,3 +27,5 @@ export const NavBar = () => (
     </StyledLinkContainer>
   </StyledSection>
 );
+
+NavBar.propTypes = {};

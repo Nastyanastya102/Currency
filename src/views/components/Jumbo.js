@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {ArbitraryComponent, StyleContent, Header} from '../styles/JumboStyle';
 
@@ -15,3 +16,4 @@ export const Jumbo = () => (
   </ArbitraryComponent>
 );
 
+Jumbo.propTypes = {};

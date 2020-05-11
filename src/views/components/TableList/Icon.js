@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
  export const Star = ({color}) => ( 
   <svg height="18pt" viewBox="0 -10 511.98685 511" width="18pt" xmlns="http://www.w3.org/2000/svg">
@@ -21,4 +22,9 @@ import React from 'react';
     fill={color ? "#ffc107" : ''}/>
   </svg> 
 );
+
+Star.propTypes = {
+  color: PropTypes.bool.isRequired,
+};
+
  

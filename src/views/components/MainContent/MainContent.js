@@ -81,7 +81,7 @@ Content.propTypes = {
   getTextInput: PropTypes.func.isRequired,
   setToCur: PropTypes.func.isRequired,
   currencyApp: PropTypes.shape({
-    date: PropTypes.string.isRequired,
+    dataFromAPI: PropTypes.arrayOf(PropTypes.object).isRequired,
     error: PropTypes.bool.isRequired,
     formGridFrome: PropTypes.string.isRequired,
     formGridTo: PropTypes.string.isRequired,
@@ -89,3 +89,4 @@ Content.propTypes = {
     pending: PropTypes.bool.isRequired
   }),
 };
+

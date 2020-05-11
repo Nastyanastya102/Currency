@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { array, object } from 'prop-types';
 import {Form, Col} from 'react-bootstrap';
 
 import {StyleForFormHead} from '../../styles/MainContentStyle';
@@ -36,4 +36,10 @@ Input.propTypes = {
   as: PropTypes.string.isRequired,
   value: PropTypes.node.isRequired,
   event: PropTypes.func.isRequired,
+};
+
+Input.defaultProps = {
+  placeholder: '',
+  name: '',
+  list: object, 
 };

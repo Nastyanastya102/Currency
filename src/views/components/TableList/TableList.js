@@ -36,5 +36,5 @@ export default TableList;
 
 TableList.propTypes = {
   filterList: PropTypes.func.isRequired,
-  dataFromAPI: PropTypes.array.isRequired,
+  dataFromAPI: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
