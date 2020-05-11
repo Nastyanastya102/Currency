@@ -3,8 +3,8 @@ export const dataForItems = [
   {
     top: [
       ['#', '#', '#', '#'],
-      ['About', 'About me', 'About my exp.', 'About my couses'],
-    ],
+      ['About', 'About me', 'About my exp.', 'About my couses']
+    ]
   },
   {
     bottom: [
@@ -14,7 +14,7 @@ export const dataForItems = [
         'tel:+380930482297',
         'mailto:little.smart.bee@gmail.com',
       ],
-      ['Facebook', 'Linkedin', 'Tel. number', 'Gmail'],
-    ],
-  },
+      ['Facebook', 'Linkedin', 'Tel. number', 'Gmail']
+    ]
+  }
 ];

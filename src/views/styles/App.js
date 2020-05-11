@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Container} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 export const StyledContainer = styled.section `
   background-color: #71717126;  

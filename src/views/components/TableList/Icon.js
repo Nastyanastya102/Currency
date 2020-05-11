@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
- export const Star = ({color}) => ( 
+ export const Star = ({ color }) => ( 
   <svg height="18pt" viewBox="0 -10 511.98685 511" width="18pt" xmlns="http://www.w3.org/2000/svg">
     <path d="m114.59375 491.140625c-5.609375 
     0-11.179688-1.75-15.933594-5.1875-8.855468-6.417969-12.992187-17.449219-10.582031-28.09375l32.9375-145.089844-111.703125-97.960937c-8.210938-7.167969-11.347656-18.519532-7.976562-28.90625 
@@ -24,7 +24,7 @@ import PropTypes from 'prop-types';
 );
 
 Star.propTypes = {
-  color: PropTypes.bool.isRequired,
+  color: PropTypes.bool.isRequired
 };
 
  

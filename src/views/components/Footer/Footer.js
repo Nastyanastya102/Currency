@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import {Container} from 'react-bootstrap';
-
-import {ListItem} from './List/ListItem';
-import {List} from './List/List';
-import {dataForItems} from './FooterData';
-import {
+import { Container } from 'react-bootstrap';
+ 
+ 
+import { ListItem } from './List/ListItem';
+import { List } from './List/List';
+import { dataForItems } from './FooterData';
+import { 
   FooterTop,
   FooterBottom,
   FooterHeader,
-  FooterTitle,
+  FooterTitle
 } from '../../styles/FooterStyle';
 
 export const Footer = () => (

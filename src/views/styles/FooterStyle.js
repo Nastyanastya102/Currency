@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Row, Col} from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 export const FooterTop = styled(Row) `
   background-color: #45a6ba;

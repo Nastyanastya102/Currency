@@ -1,8 +1,8 @@
-import {createStore, applyMiddleware, combineReducers, compose} from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 
-import reducers, {rootSaga} from './ducks/currencyDuck';
+import reducers, { rootSaga } from './ducks/currencyDuck';
 
 export const configureStore = (initialState = {}) => {
   const rootReducer = combineReducers(reducers);

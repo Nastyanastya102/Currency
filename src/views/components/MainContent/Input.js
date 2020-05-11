@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import PropTypes, { array, object } from 'prop-types';
-import {Form, Col} from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { Form, Col } from 'react-bootstrap';
 
-import {StyleForFormHead} from '../../styles/MainContentStyle';
+import { StyleForFormHead } from '../../styles/MainContentStyle';
 
-export const Input = ({as, controlId, text, value, placeholder, name, event, list}) => (
+export const Input = ({ as, controlId, text, value, placeholder, name, onInputChange, list }) => (
   <Form.Group as={Col} controlId={controlId}>
     <StyleForFormHead>
       {
@@ -19,7 +19,7 @@ export const Input = ({as, controlId, text, value, placeholder, name, event, lis
       placeholder={placeholder}
       name={name}
       value={value}
-      onChange={event}
+      onChange={onInputChange}
     >
       {
         as === 'input' 
@@ -35,11 +35,11 @@ Input.propTypes = {
   text: PropTypes.string.isRequired,
   as: PropTypes.string.isRequired,
   value: PropTypes.node.isRequired,
-  event: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired
 };
 
 Input.defaultProps = {
   placeholder: '',
   name: '',
-  list: object, 
+  list: ''
 };

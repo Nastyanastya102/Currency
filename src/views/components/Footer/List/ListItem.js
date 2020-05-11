@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {ListGroup} from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 
-import {Footer, FooterTitle} from '../../../styles/FooterStyle';
+import { Footer, FooterTitle } from '../../../styles/FooterStyle';
 
-export const ListItem = ({data, title}) => (
+export const ListItem = ({ data, title }) => (
   <ListGroup as="ul">
     <Footer>
       <FooterTitle>{title}</FooterTitle>
@@ -23,5 +23,5 @@ export const ListItem = ({data, title}) => (
 
 ListItem.propTypes = {
   data: PropTypes.arrayOf(PropTypes.array).isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };

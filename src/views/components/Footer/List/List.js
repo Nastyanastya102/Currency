@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 export const List = props => (
   <>
@@ -15,5 +15,5 @@ export const List = props => (
 
 List.propTypes = {
   top: PropTypes.element.isRequired,
-  bottom: PropTypes.element.isRequired,
+  bottom: PropTypes.element.isRequired
 };

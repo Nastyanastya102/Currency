@@ -1,21 +1,21 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form} from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 import { ErrorInfo } from '../ErrorInfo';
 import Sum from '../../containers/SumStore';
-import {Input} from './Input';
+import { Input } from './Input';
 
-const Content = ({currencyApp, getTextInput, setToCur, getSumValue}) => {
+const Content = ({ currencyApp, getTextInput, setToCur, getSumValue }) => {
 
-  const handleChangeInput = (event) => {
+  const handleInputChange = (event) => {
     if (!isNaN(event.target.value)) {
       getTextInput(event.target.value);
     }
   };
 
-  const handleChange = (event) => {
+  const handleSelectChange = (event) => {
     setToCur(event.target.selectedOptions[0].text, event.target.id);
     getSumValue(0, 0, 0, event.target.selectedOptions[0].text);
   };
@@ -34,8 +34,8 @@ const Content = ({currencyApp, getTextInput, setToCur, getSumValue}) => {
     getTextInput('');
   };
   
-  if (currencyApp.pending ) return <p>Loading...</p>;
-  if (currencyApp.dataFromAPI.length === 0 || currencyApp.error === true) return <ErrorInfo/>;
+  if (currencyApp.pending) return <p>Loading...</p>;
+  if (currencyApp.dataFromAPI.length === 0 || currencyApp.error) return <ErrorInfo/>;
   const list = currencyApp.dataFromAPI.map((item, index) => (
     <option key={index} value={item.key}>
       {item.key}
@@ -50,7 +50,7 @@ const Content = ({currencyApp, getTextInput, setToCur, getSumValue}) => {
           as="input"
           placeholder="Enter value"
           value={currencyApp.inputText}
-          event={(event) => handleChangeInput(event)}
+          onInputChange={(event) => handleInputChange(event)}
         />
         <Input
           controlId="formGridFrome"
@@ -59,7 +59,7 @@ const Content = ({currencyApp, getTextInput, setToCur, getSumValue}) => {
           value={currencyApp.formGridFrome}
           name="from"
           list={list}
-          event={(event) => handleChange(event)}
+          onInputChange={(event) => handleSelectChange(event)}
         />
         <Input
           controlId="formGridTo"
@@ -68,7 +68,7 @@ const Content = ({currencyApp, getTextInput, setToCur, getSumValue}) => {
           value={currencyApp.formGridTo}
           name="to"
           list={list}
-          event={(event) => handleChange(event)}
+          onInputChange={(event) => handleSelectChange(event)}
         />
       </Form.Row>
       <Sum /> 
@@ -79,9 +79,6 @@ const Content = ({currencyApp, getTextInput, setToCur, getSumValue}) => {
 export default Content;
 
 Content.propTypes = {
-  getSumValue: PropTypes.func.isRequired,
-  getTextInput: PropTypes.func.isRequired,
-  setToCur: PropTypes.func.isRequired,
   currencyApp: PropTypes.shape({
     dataFromAPI: PropTypes.arrayOf(PropTypes.object).isRequired,
     error: PropTypes.bool.isRequired,
@@ -90,5 +87,9 @@ Content.propTypes = {
     inputText: PropTypes.number.isRequired,
     pending: PropTypes.bool.isRequired
   }),
+  sum: PropTypes.objectOf(PropTypes.number).isRequired,
+  getSumValue: PropTypes.func.isRequired,
+  getTextInput: PropTypes.func.isRequired,
+  setToCur: PropTypes.func.isRequired
 };
 

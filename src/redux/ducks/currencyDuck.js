@@ -1,4 +1,4 @@
-import {takeEvery, put, call} from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 
 import {
   getSumByValue,
@@ -20,59 +20,46 @@ export const GET_FILTERED_ITEMS = 'my-app/gettingData/GET_FILTERED_ITEMS';
 export const GET_SUM = 'my-app/getSum/GET_SUM';
 
 /* Actions */
-export const getTextInput = value => {
-  return {
+export const getTextInput = value => ({
     type: GET_TEXT_INPUT,
-    value,
-  };
-};
+    value
+});
 
-export const getSumValue = (value1, value2, value3, currency) => {
-  return {
+export const getSumValue = (value1, value2, value3, currency) => ({
     type: GET_SUM,
     value1,
     value2,
     value3,
-    currency,
-  };
-};
+    currency
+});
 
-export const setToCur = (value, id) => {
-  return {
+
+export const setToCur = (value, id) => ({
     type: SET_TO_CURRENCY,
     value,
-    id,
-  };
-};
+    id
+});
 
-export const filterList = (item, index) => {
-  return {
+export const filterList = (item, index) => ({
     type: GET_FILTERED_ITEMS,
     item,
     index
-  };
-};
+});
 
 /* Request actions */
 
-export const fetchProductsPending = () => {
-  return {
-    type: FETCH_PRODUCTS_PENDING,
-  };
-};
+export const fetchProductsPending = () => ({
+    type: FETCH_PRODUCTS_PENDING
+});
 
-export const fetchProductsSuccess = data => {
-  return {
+export const fetchProductsSuccess = data => ({
     type: FETCH_PRODUCTS_SUCCESS,
-    data,
-  };
-};
+    data
+});
 
-export const fetchProductsError = () => {
-  return {
-    type: FETCH_PRODUCTS_ERROR,
-  };
-};
+export const fetchProductsError = () => ({
+    type: FETCH_PRODUCTS_ERROR
+});
 
 
 /* Reducers */
@@ -83,21 +70,21 @@ const initialState = {
   formGridFrome: '',
   formGridTo: '',
   date: '',
-  inputText: 0,
+  inputText: 0
 };
 
 const currencyApp = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
-      return updateState(state, {pending: true});
+      return updateState(state, { pending: true });
     case FETCH_PRODUCTS_SUCCESS:
       return gettingData(state, action);
     case FETCH_PRODUCTS_ERROR:
-      return updateState(state, {error: true});
+      return updateState(state, { error: true });
     case GET_TEXT_INPUT:
-      return updateState(state, {inputText: +action.value});
+      return updateState(state, { inputText: Number(action.value) });
     case SET_TO_CURRENCY:
-      return updateState(state, {[action.id]: action.value});
+      return updateState(state, { [action.id]: action.value });
     case GET_FILTERED_ITEMS:
       return favorite(action.item, action.index, state);
     default:
@@ -105,7 +92,7 @@ const currencyApp = (state = initialState, action) => {
   }
 };
 
- const getSum = (state = {sum: 0}, action) => {
+ const getSum = (state = { sum: 0 }, action) => {
   switch (action.type) {
     case GET_SUM:
       return getSumByValue(state, action);
@@ -132,7 +119,7 @@ export function* watchWork() {
       data,
     });
   } catch (error) {
-    yield put({type: FETCH_PRODUCTS_ERROR});
+    yield put({ type: FETCH_PRODUCTS_ERROR });
     console.log(error);
   }
 }

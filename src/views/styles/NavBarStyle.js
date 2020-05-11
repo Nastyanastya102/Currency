@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Nav, Navbar} from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 
 export const StyledLinkContainer = styled(Nav) `
   flex-direction: row;

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Nav, Navbar} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-
+import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+ 
 import {
   StyledLinkContainer,
   StyledButton,
-  StyledSection,
+  StyledSection
 } from '../styles/NavBarStyle';
 import Logo from '../../img/money.svg';
 

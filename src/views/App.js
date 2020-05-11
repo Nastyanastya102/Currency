@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import {
   NavBar,
@@ -10,12 +10,12 @@ import {
   Content,
   TableList
 } from './components';
-import {StyledContainer, StyledSection} from './styles/App';
+import { StyledContainer, StyledSection } from './styles/App';
 
-export const App = ({fetchProductsPending}) => {
+export const App = ({ fetchProductsPending }) => {
   useEffect(() => {
     fetchProductsPending(); 
- }, [fetchProductsPending]);
+  }, [fetchProductsPending]);
 
   return (   
     <StyledContainer>   
@@ -35,5 +35,5 @@ export const App = ({fetchProductsPending}) => {
 };
 
 App.propTypes = {
-  fetchProductsPending: PropTypes.func.isRequired,
+  fetchProductsPending: PropTypes.func.isRequired
 };

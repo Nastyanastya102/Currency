@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {Jumbotron, Container} from 'react-bootstrap';
+import { Jumbotron, Container } from 'react-bootstrap';
 
 import Url from '../../img/bc-money.jpg';
 

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { ErrorInfo } from '../ErrorInfo';
 import Table from 'react-bootstrap/Table';
-import {Star} from './Icon';
+import { Star } from './Icon';
   
-const TableList = ({dataFromAPI, filterList}) => {
+const TableList = ({ dataFromAPI, filterList }) => {
   
-  if (dataFromAPI.length === 0) return <ErrorInfo/>;
+  if (!dataFromAPI.length) return <ErrorInfo/>;
   return (
     <Table striped bordered hover variant="dark">
       <thead>
@@ -40,6 +40,6 @@ const TableList = ({dataFromAPI, filterList}) => {
 export default TableList;
 
 TableList.propTypes = {
-  filterList: PropTypes.func.isRequired,
   dataFromAPI: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filterList: PropTypes.func.isRequired
 };
