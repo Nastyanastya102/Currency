@@ -15,7 +15,7 @@ import {StyledContainer, StyledSection} from './styles/App';
 export const App = ({fetchProductsPending}) => {
   useEffect(() => {
     fetchProductsPending(); 
- }, []);
+ }, [fetchProductsPending]);
 
   return (   
     <StyledContainer>   

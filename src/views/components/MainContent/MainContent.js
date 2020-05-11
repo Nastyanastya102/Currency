@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Form} from 'react-bootstrap';
 
+import { ErrorInfo } from '../ErrorInfo';
 import Sum from '../../containers/SumStore';
 import {Input} from './Input';
 
@@ -32,8 +33,9 @@ const Content = ({currencyApp, getTextInput, setToCur, getSumValue}) => {
     );
     getTextInput('');
   };
-
-  if (currencyApp.pending) return <p>Loading...</p>;
+  
+  if (currencyApp.pending ) return <p>Loading...</p>;
+  if (currencyApp.dataFromAPI.length === 0 || currencyApp.error === true) return <ErrorInfo/>;
   const list = currencyApp.dataFromAPI.map((item, index) => (
     <option key={index} value={item.key}>
       {item.key}

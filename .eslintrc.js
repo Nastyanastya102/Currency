@@ -279,6 +279,7 @@ module.exports = {
         ],
         "valid-jsdoc": "error",
         "vars-on-top": "error",
+        "no-unused-vars": "off",
         "wrap-iife": "error",
         "wrap-regex": "error",
         "yield-star-spacing": "error",
