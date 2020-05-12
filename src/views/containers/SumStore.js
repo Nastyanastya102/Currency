@@ -11,4 +11,3 @@ export default connect(
   mapStateToProps,
   null
 )(Sum);
-  

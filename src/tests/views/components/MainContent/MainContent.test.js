@@ -30,7 +30,7 @@ describe('Should render MainContent', () => {
     wrapper = shallow(<MainContent { ...props } />);
   });
 
-  it('renders correctly', () => {
+  it('MainContent should renders correctly', () => {
     wrapper = shallow(<MainContent { ...props } />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });

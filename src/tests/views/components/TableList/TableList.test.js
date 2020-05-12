@@ -19,18 +19,18 @@ const props = {
   filterList: jest.fn()
   };
 
-describe('Should render MainContent', () => {
+describe('Should render Table', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<Table { ...props } />);
   });
   
-  it('renders correctly', () => {
+  it('Table should renders correctly', () => {
     wrapper = shallow(<Table { ...props } />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it('renders correctly', () => {
+  it('Table should renders rigth items length', () => {
     const headers = wrapper.find('tbody tr');
     expect(headers).toHaveLength(props.dataFromAPI.length);
   });

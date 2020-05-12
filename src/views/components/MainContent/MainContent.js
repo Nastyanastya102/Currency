@@ -91,4 +91,3 @@ Content.propTypes = {
   getTextInput: PropTypes.func.isRequired,
   setToCur: PropTypes.func.isRequired
 };
-
