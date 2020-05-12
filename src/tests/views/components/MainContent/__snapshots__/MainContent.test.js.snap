@@ -18,19 +18,45 @@ exports[`Should render MainContent renders correctly 1`] = `
       as="select"
       controlId="formGridFrome"
       event={[Function]}
-      list={Array []}
+      list={
+        Array [
+          <option
+            value="CAD"
+          >
+            CAD
+          </option>,
+          <option
+            value="HKD"
+          >
+            HKD
+          </option>,
+        ]
+      }
       name="from"
-      text="From"
-      value=""
+      text="Base"
+      value="EUR"
     />
     <Input
       as="select"
       controlId="formGridTo"
       event={[Function]}
-      list={Array []}
+      list={
+        Array [
+          <option
+            value="CAD"
+          >
+            CAD
+          </option>,
+          <option
+            value="HKD"
+          >
+            HKD
+          </option>,
+        ]
+      }
       name="to"
       text="To"
-      value=""
+      value="CAD"
     />
   </FormRow>
   <Connect(Sum) />

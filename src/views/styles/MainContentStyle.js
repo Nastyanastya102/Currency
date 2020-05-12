@@ -13,5 +13,5 @@ export const Total = styled(Col) `
   font-size: 37px;
   margin-top: 3%;
   color: #243955;
-  opacity: ${ (props) => (props.opac ? '0;' : '1;') };
+  opacity: ${ (props) => (props.opac ? '0' : '1') };
 `;

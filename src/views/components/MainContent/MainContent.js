@@ -1,95 +1,93 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Form } from 'react-bootstrap';
 
+import { ErrorInfo } from '../ErrorInfo';
 import Sum from '../../containers/SumStore';
 import { Input } from './Input';
 
-import { Form } from 'react-bootstrap';
+const Content = ({ currencyApp, getTextInput, setToCur, getSumValue }) => {
 
-const Content = ({ gettingData, getTextInput, setToCur, getSumValue}) => {
-
- const handleChangeInput = (event) => {
+  const handleInputChange = (event) => {
     if (!isNaN(event.target.value)) {
       getTextInput(event.target.value);
     }
   };
 
-  const handleChange = (event) => {
+  const handleSelectChange = (event) => {
     setToCur(event.target.selectedOptions[0].text, event.target.id);
-    getSumValue(0, 0, 0);
+    getSumValue(0, 0, 0, event.target.selectedOptions[0].text);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-     const from = gettingData.dataFromAPI.findIndex((currentValue) => currentValue.key === gettingData.formGridFrome);
-     const to = gettingData.dataFromAPI.findIndex((currentValue) => currentValue.key === gettingData.formGridTo);
+    const from = currencyApp.dataFromAPI.findIndex((currentValue) => currentValue.key === currencyApp.formGridFrome);
+    const to = currencyApp.dataFromAPI.findIndex((currentValue) => currentValue.key === currencyApp.formGridTo);
      
     getSumValue(
-      gettingData.inputText,
-      gettingData.dataFromAPI[from].value,
-      gettingData.dataFromAPI[to].value,
-      gettingData.formGridFrome
-      );
+    currencyApp.inputText,
+    currencyApp.dataFromAPI[from].value,
+    currencyApp.dataFromAPI[to].value,
+    currencyApp.formGridFrome
+    );
     getTextInput('');
   };
-
-  if (gettingData.pending) return <p>Loading...</p>;
-   const list = gettingData.dataFromAPI.map((item, index) => (
+  
+  if (currencyApp.pending) return <p>Loading...</p>;
+  if (currencyApp.dataFromAPI.length === 0 || currencyApp.error) return <ErrorInfo/>;
+  const list = currencyApp.dataFromAPI.map((item, index) => (
     <option key={index} value={item.key}>
       {item.key}
     </option>
   ));
-
-    return (
-      <Form onSubmit={(e) => handleSubmit(e)}>
-        <Form.Row>
-          <Input
-            controlId="formGridInput"
-            text="Amount"
-            as="input"
-            placeholder="Enter value"
-            value={gettingData.inputText}
-            event={(event) => handleChangeInput(event)}
-          />
-
-          <Input
-            controlId="formGridFrome"
-            text="Base"
-            as="select"
-            value={gettingData.formGridFrome}
-            name="from"
-            list={list}
-            event={(event) => handleChange(event)}
-          />
-
-          <Input
-            controlId="formGridTo"
-            text="To"
-            as="select"
-            value={gettingData.formGridTo}
-            name="to"
-            list={list}
-            event={(event) => handleChange(event)}
-          />
-        </Form.Row>
-        <Sum /> 
-      </Form>
-    );
-  };
+  return (
+    <Form onSubmit={(e) => handleSubmit(e)}>
+      <Form.Row>
+        <Input
+          controlId="formGridInput"
+          text="Amount"
+          as="input"
+          placeholder="Enter value"
+          value={currencyApp.inputText}
+          onInputChange={(event) => handleInputChange(event)}
+        />
+        <Input
+          controlId="formGridFrome"
+          text="Base"
+          as="select"
+          value={currencyApp.formGridFrome}
+          name="from"
+          list={list}
+          onInputChange={(event) => handleSelectChange(event)}
+        />
+        <Input
+          controlId="formGridTo"
+          text="To"
+          as="select"
+          value={currencyApp.formGridTo}
+          name="to"
+          list={list}
+          onInputChange={(event) => handleSelectChange(event)}
+        />
+      </Form.Row>
+      <Sum /> 
+    </Form>
+  );
+};
 
 export default Content;
 
 Content.propTypes = {
-  getSumValue: PropTypes.func.isRequired,
-  getTextInput: PropTypes.func.isRequired,
-  setToCur: PropTypes.func.isRequired,
-  gettingData: PropTypes.shape({
-    date: PropTypes.string.isRequired,
+  currencyApp: PropTypes.shape({
+    dataFromAPI: PropTypes.arrayOf(PropTypes.object).isRequired,
     error: PropTypes.bool.isRequired,
     formGridFrome: PropTypes.string.isRequired,
     formGridTo: PropTypes.string.isRequired,
     inputText: PropTypes.number.isRequired,
     pending: PropTypes.bool.isRequired
   }),
+  getSumValue: PropTypes.func.isRequired,
+  getTextInput: PropTypes.func.isRequired,
+  setToCur: PropTypes.func.isRequired
 };

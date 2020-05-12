@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import {
   NavBar,
@@ -10,18 +10,7 @@ import {
   Content,
   TableList
 } from './components';
-
-import { Container } from 'react-bootstrap';
-import styled from 'styled-components';
-
-const StyledContainer = styled.section `
-    background-color: #71717126;  
-    min-height: 100vh; 
-`;
-const StyledSection = styled(Container) `
-    margin-bottom: 100px;
-`;
-
+import { StyledContainer, StyledSection } from './styles/App';
 
 export const App = ({ fetchProductsPending }) => {
   useEffect(() => {
@@ -46,5 +35,5 @@ export const App = ({ fetchProductsPending }) => {
 };
 
 App.propTypes = {
-  fetchProductsPending: PropTypes.func.isRequired,
+  fetchProductsPending: PropTypes.func.isRequired
 };

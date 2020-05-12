@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Jumbotron, Container } from 'react-bootstrap';
+
 import Url from '../../img/bc-money.jpg';
 
 export const ArbitraryComponent = styled(Jumbotron) `
@@ -8,6 +9,7 @@ export const ArbitraryComponent = styled(Jumbotron) `
   background-size: cover;
   height: 400px;
 `;
+
 export const StyleContent = styled(Container) `
   text-align: center;
   color: #e3ab1a;

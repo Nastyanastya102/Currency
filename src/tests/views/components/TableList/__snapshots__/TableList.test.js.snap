@@ -22,42 +22,47 @@ exports[`Should render MainContent renders correctly 1`] = `
   </thead>
   <tbody>
     <tr
-      key="1"
+      key="CAD"
     >
       <td>
         1
-      </td>
-      <td>
-        1
-      </td>
-      <td>
-        EUR
-      </td>
-    </tr>
-    <tr
-      key="2"
-    >
-      <td>
-        2
-      </td>
-      <td>
-        2
       </td>
       <td>
         CAD
       </td>
+      <td>
+        1.5118
+      </td>
+      <td>
+        <i
+          onClick={[Function]}
+        >
+          <Star
+            color={false}
+          />
+        </i>
+      </td>
     </tr>
     <tr
-      key="3"
+      key="HKD"
     >
       <td>
-        3
+        2
       </td>
       <td>
-        3
+        HKD
       </td>
       <td>
-        RUB
+        8.4052
+      </td>
+      <td>
+        <i
+          onClick={[Function]}
+        >
+          <Star
+            color={false}
+          />
+        </i>
       </td>
     </tr>
   </tbody>
