@@ -26,5 +26,3 @@ import PropTypes from 'prop-types';
 Star.propTypes = {
   color: PropTypes.bool.isRequired
 };
-
- 

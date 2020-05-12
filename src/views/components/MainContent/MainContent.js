@@ -87,7 +87,6 @@ Content.propTypes = {
     inputText: PropTypes.number.isRequired,
     pending: PropTypes.bool.isRequired
   }),
-  sum: PropTypes.objectOf(PropTypes.number).isRequired,
   getSumValue: PropTypes.func.isRequired,
   getTextInput: PropTypes.func.isRequired,
   setToCur: PropTypes.func.isRequired

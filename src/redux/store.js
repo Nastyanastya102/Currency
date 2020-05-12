@@ -7,8 +7,7 @@ import reducers, { rootSaga } from './ducks/currencyDuck';
 export const configureStore = (initialState = {}) => {
   const rootReducer = combineReducers(reducers);
   const sagaMiddleware = createSagaMiddleware();
-  const composeEnhancers =
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers = compose;
   const store = createStore(
     rootReducer,
     initialState,

@@ -16,7 +16,7 @@ describe('should return right value from all action creators', () => {
 
   it('should create an action for get a sum for others', () => {
     expect(types.getSumValue(10, 10, 10, 'EUR')).toEqual(
-      sum(types.GET_SUM, 'EUR')
+      sum(types.GET_SUM)
     );
   });
 

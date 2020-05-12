@@ -21,4 +21,3 @@ Sum.propTypes = {
   sum: PropTypes.number,
   formGridTo: PropTypes.string
 };
-

@@ -11,10 +11,10 @@ const props = {
       { key: 'CAD', value: 1.5118, star: false }, 
       { key: 'HKD', value: 8.4052, star: false }
     ],
-    date: "2020-05-08",
+    date: '2020-05-08',
     error: false,
-    formGridFrome: "EUR",
-    formGridTo: "CAD",
+    formGridFrome: 'EUR',
+    formGridTo: 'CAD',
     inputText: 0,
     pending: false
   },
